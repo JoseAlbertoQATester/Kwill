@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwill.Automation.Test", "Kwill.Automation.Test.csproj", "{1B841D2B-889B-40F2-B58E-9E8A23AD2DBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kwill.Automation.Domain", "..\Kwill.Automation.Domain\Kwill.Automation.Domain.csproj", "{5B2A49B1-C01B-4213-8BE8-17F664EFEECF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kwill.Automation.Data", "..\Kwill.Automation.Data\Kwill.Automation.Data.csproj", "{5267C3BC-4B51-4D06-B2CF-8DD8EE8BCE91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Driver", "Driver", "{47FB4B92-950E-4045-8538-74930DE7CA75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B841D2B-889B-40F2-B58E-9E8A23AD2DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B841D2B-889B-40F2-B58E-9E8A23AD2DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B841D2B-889B-40F2-B58E-9E8A23AD2DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B841D2B-889B-40F2-B58E-9E8A23AD2DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B2A49B1-C01B-4213-8BE8-17F664EFEECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2A49B1-C01B-4213-8BE8-17F664EFEECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2A49B1-C01B-4213-8BE8-17F664EFEECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2A49B1-C01B-4213-8BE8-17F664EFEECF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5267C3BC-4B51-4D06-B2CF-8DD8EE8BCE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5267C3BC-4B51-4D06-B2CF-8DD8EE8BCE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5267C3BC-4B51-4D06-B2CF-8DD8EE8BCE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5267C3BC-4B51-4D06-B2CF-8DD8EE8BCE91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5BF47BC-0205-4FEE-8AEA-234CFA2D20B1}
+	EndGlobalSection
+EndGlobal
