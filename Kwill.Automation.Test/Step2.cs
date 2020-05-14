@@ -5,6 +5,8 @@ using OpenQA.Selenium.Chrome;
 using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.UserCases;
 using Kwill.Automation.Domain.Repository;
+using Kwill.Automation.Domain.UserCases.FormWill;
+
 namespace Kwill.Automation.Test
 {
     class Step2
@@ -15,6 +17,8 @@ namespace Kwill.Automation.Test
         public LogOut logout = new LogOut();
 
         public Register register = new Register();
+
+        public TrusteesAndExecutorsForm trusteesAndExecutors = new TrusteesAndExecutorsForm();
 
         public string webUrlDashboard;
 
@@ -40,7 +44,15 @@ namespace Kwill.Automation.Test
             driver.Url = LogIn;
         }
 
-      
+
+        [Test]
+        [Category("Step2")]
+
+        public void Step1EndNotLegalGuardian()
+        {
+            login.LoginCaseOK(driver, Username, PasswordOK);
+            trusteesAndExecutors.SelectEstateAccesStep2(driver);
+        }
 
         [TearDown]
         public void Close()

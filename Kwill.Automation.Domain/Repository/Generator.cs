@@ -18,10 +18,10 @@ namespace PunditLeagueAutomation.Domain.Repository
             return token.ToString();
         }
 
-        public string GenerarNumber()
+        public int GenerarNumber(int min,int max)
         {
             Random rnd = new Random();
-            return rnd.Next().ToString();
+            return rnd.Next(min,max);
         }
 
     }

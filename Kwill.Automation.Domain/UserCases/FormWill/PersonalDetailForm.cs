@@ -6,7 +6,7 @@ using PunditLeagueAutomation.Domain.Repository;
 
 namespace Kwill.Automation.Domain.UserCases.FormWill
 {
-    class PersonalDetailForm
+    public class PersonalDetailForm
     {
         readonly Generator generator = new Generator();
 
@@ -19,23 +19,35 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         readonly PetEntity pet = new PetEntity();
 
         string name;
-
+        public void SelectEstateAccesStep1(IWebDriver driver)
+        {
+            driver.FindElements(By.ClassName("btn-link"))[0].Click();
+        }
 
         public CustomerEntity step1Customer(IWebDriver driver)
         {
             name = generator.GeneratorString();
-        
+
+
+            driver.FindElement(By.Id("CustomerInfo_FirstName")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_MiddleName")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_LastName")).Clear();
+            driver.FindElement(By.Id("CurrentAddress")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_Address_Number")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_Address_Street")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_Address_Village")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_Address_City")).Clear();
+            driver.FindElement(By.Id("CustomerInfo_Telephone")).Clear();
+
+
             driver.FindElement(By.Id("CustomerInfo_FirstName")).SendKeys(name);
             driver.FindElement(By.Id("CustomerInfo_MiddleName")).SendKeys(name);
             driver.FindElement(By.Id("CustomerInfo_LastName")).SendKeys(name);
 
-            IWebElement maritalstatus = driver.FindElement(By.Id("ddl_maritalstatus"));
-            SelectElement selectElement = new SelectElement(maritalstatus);
-            selectElement.SelectByValue("Married"); 
 
             IWebElement day = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Day"));
             SelectElement dayselect = new SelectElement(day);
-            dayselect.SelectByValue("1"); 
+            dayselect.SelectByValue("1");
 
             IWebElement moth = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Month"));
             SelectElement mothselect = new SelectElement(moth);
@@ -43,8 +55,12 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
             IWebElement year = driver.FindElement(By.Id("ddl_maritalstatus"));
             SelectElement yearselect = new SelectElement(year);
-            yearselect.SelectByValue("1995");
-            
+            yearselect.SelectByText("2002");
+
+            IWebElement maritalstatus = driver.FindElement(By.Id("ddl_maritalstatus"));
+            SelectElement selectElement = new SelectElement(maritalstatus);
+            selectElement.SelectByValue("633976ac-1367-42cc-812e-cbfcbbefc789");
+
             driver.FindElement(By.Id("CurrentAddress")).SendKeys(name);
             driver.FindElement(By.Id("CustomerInfo_Address_Number")).SendKeys(name);
             driver.FindElement(By.Id("CustomerInfo_Address_Street")).SendKeys(name);
@@ -149,7 +165,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
             driver.FindElement(By.Id("petName")).SendKeys(name);
             driver.FindElement(By.Id("petType")).SendKeys(name);
-     
+
             return children;
         }
 
@@ -171,7 +187,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         {
             int element = driver.FindElements(By.ClassName("person")).Count;
 
-            for (int i=1; i < element*2 ; i= i+2 )
+            for (int i = 1; i < element * 2; i = i + 2)
             {
 
                 driver.FindElements(By.ClassName("edit"))[0].Click();
@@ -180,17 +196,17 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
             }
 
-            return element-driver.FindElements(By.ClassName("person")).Count;
+            return element - driver.FindElements(By.ClassName("person")).Count;
         }
 
         public int step1DeleteOnePet(IWebDriver driver)
         {
 
-                driver.FindElements(By.ClassName("edit"))[1].Click();
+            driver.FindElements(By.ClassName("edit"))[1].Click();
 
-                driver.FindElements(By.ClassName("edit"))[1].Click();
+            driver.FindElements(By.ClassName("edit"))[1].Click();
 
-            
+
             return driver.FindElements(By.ClassName("person")).Count;
         }
 
