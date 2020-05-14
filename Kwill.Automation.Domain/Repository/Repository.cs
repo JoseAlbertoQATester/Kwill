@@ -13,11 +13,11 @@ namespace Kwill.Automation.Domain.Repository
 
         public ChildrenData childrenData = new ChildrenData();
 
-        public PetData petdata = new PetData();
+        public PartnerData partnerdata = new PartnerData();
 
-        public PetData petdata = new PetData();
+        public PersonData persondata = new PersonData();
 
-        public PetData petdata = new PetData();
+        public CustomerData customerdata = new CustomerData();
 
 
 
@@ -42,6 +42,47 @@ namespace Kwill.Automation.Domain.Repository
             }
 
             return kWillMapper.MapFrom(data.GetPetData(name));
+        }
+
+        public ChildrenEntity GetChildren(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new System.ArgumentNullException(nameof(name));
+            }
+
+            return kWillMapper.MapFrom(data.GetChildrenData(name));
+        }
+
+        public PersonEntity GetPerson(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new System.ArgumentNullException(nameof(name));
+            }
+
+            return kWillMapper.MapFrom(data.GetPersonData(name));
+        }
+
+        public PartnerEntity GetPartner(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new System.ArgumentNullException(nameof(name));
+            }
+
+            return kWillMapper.MapFrom(data.GetPartnerData(name));
+        }
+
+
+        public CustomerEntity GetCustomer(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new System.ArgumentNullException(nameof(name));
+            }
+
+            return kWillMapper.MapFrom(data.GetCustomerData(name));
         }
 
     }

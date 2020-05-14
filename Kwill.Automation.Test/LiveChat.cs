@@ -5,56 +5,57 @@ using OpenQA.Selenium.Chrome;
 using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.UserCases;
 using Kwill.Automation.Domain.Repository;
+using Kwill.Automation.Domain.UserCases.FormWill;
 
 namespace Kwill.Automation.Test
 {
-    class Create
+    class LiveChat
     {
+        public LogIn login = new LogIn();
 
-        public WillEntity Will = new WillEntity();
+        public LogOut logout = new LogOut();
 
-        public CreateUser createUser = new CreateUser();
+        public Register register = new Register();
 
-        public Repository repository = new Repository();
+        public Livechat livechat = new Livechat();
+
+        public string webUrlDashboard;
 
         public string Username { get; private set; }
 
         public string PasswordOK { get; private set; }
 
+        public string LogIn { get; private set; }
+
         public IWebDriver driver;
+
 
 
         [SetUp]
         public void Setup()
         {
+            webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
-
+            LogIn = TestContext.Parameters["webUrl"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             driver.Manage().Window.Maximize();
-            driver.Url = TestContext.Parameters["webUrl"].ToString();
+            driver.Url = LogIn;
         }
 
         [Test]
-        [Category("Create")]
-
-        public void RegisterNotPossible()
+        [Category("LiveChat")]
+        public void Review_UseLiveChat()
         {
-            string result = createUser.CreateNewWillType1(driver);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Steps/Prerequisites/ThankYou");
+            login.LoginCaseOK(driver, Username, PasswordOK);
+            bool result = livechat.openLiveChat(driver);
+            Assert.IsTrue(result,"LiveChat is not open");
+            string text = livechat.writerLiveChat(driver);
+            Assert.AreEqual("Hellow!", text, "the text sent is not the same as the text displayed");
         }
 
 
-        [Test]
-        [Category("Create")]
-        [TestCase(0, 0)]
-        
-        public void RegisterPossible(int estate, int ownwerhouse)
-        {
-            string result = createUser.CreateNewWillType0(driver, estate, ownwerhouse);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Dashboard/Summary?nextStep=1");
-        }
 
         [TearDown]
         public void Close()

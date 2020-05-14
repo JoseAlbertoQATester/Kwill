@@ -3,6 +3,8 @@ using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.Repository;
 using System.Threading;
 using reference = Kwill.Automation.Data.References.References;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Kwill.Automation.Domain.UserCases
 {
@@ -10,6 +12,7 @@ namespace Kwill.Automation.Domain.UserCases
     {
         public string LoginCaseOK(IWebDriver driver, string user, string password)
         {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
             driver.FindElements(By.Id("marketing-link"))[6].Click();
             driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);
@@ -21,6 +24,7 @@ namespace Kwill.Automation.Domain.UserCases
 
         public string LoginCaseKO(IWebDriver driver, string user)
         {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
             driver.FindElements(By.Id("marketing-link"))[6].Click();
             driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);

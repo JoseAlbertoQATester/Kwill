@@ -16,7 +16,7 @@ namespace Kwill.Automation.Domain.UserCases
         public string CreateNewWillType0(IWebDriver driver,int estate, int ownwerhouse)
         {
             name = generator.GeneratorString();
-            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
+            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
             driver.FindElement(By.ClassName("create-will")).Click();
             driver.FindElements(By.ClassName("signup"))[estate].Click();
@@ -33,6 +33,7 @@ namespace Kwill.Automation.Domain.UserCases
 
         public string CreateNewWillType1(IWebDriver driver)
         {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
             driver.FindElement(By.ClassName("create-will")).Click();
             driver.FindElements(By.ClassName("signup"))[0].Click();

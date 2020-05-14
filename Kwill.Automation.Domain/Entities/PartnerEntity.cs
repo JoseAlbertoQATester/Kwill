@@ -1,6 +1,6 @@
 ﻿namespace Kwill.Automation.Domain.Entities
 {
-    class PartnerEntity
+    public class PartnerEntity
     {
         public string FirstName { get; set; }
 

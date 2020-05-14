@@ -3,11 +3,10 @@
 	<!-- Parameters used by tests at runtime -->
 	<TestRunParameters>
 		
-		<Parameter name="webUrl" value="http://beta.kwil.co.uk/Index" />
-		<Parameter name="webUrlAdminLogin" value="https://beta.thepunditleague.com/Admin/Login" />
-		<Parameter name="DashBoard" value="https://beta.thepunditleague.com/Dashboard" />
-		<Parameter name="user" value="josealbertolagos@test.com" />
-		<Parameter name="passwordOK" value="1234rgH@" />
+		<Parameter name="webUrl" value="http://beta.kwil.co.uk/" />
+		<Parameter name="DashBoard" value="http://beta.kwil.co.uk/Dashboard/Summary?isEdit=True" />
+		<Parameter name="user" value="tester@test.com" />
+		<Parameter name="passwordOK" value="123456" />
 		<Parameter name="adminUser" value="admin@admin.com" />
 		<Parameter name="adminPasswordOK" value="Zagzig20!9!" />
 		<Parameter name="userSecondary" value="tester1@test.com" />

@@ -8,18 +8,21 @@ using Kwill.Automation.Domain.Repository;
 
 namespace Kwill.Automation.Test
 {
-    class Create
+    class Step3
     {
 
-        public WillEntity Will = new WillEntity();
+        public LogIn login = new LogIn();
 
-        public CreateUser createUser = new CreateUser();
+        public LogOut logout = new LogOut();
 
-        public Repository repository = new Repository();
+        public Register register = new Register();
+
+        public string webUrlDashboard;
 
         public string Username { get; private set; }
 
         public string PasswordOK { get; private set; }
+        public string LogIn { get; private set; }
 
         public IWebDriver driver;
 
@@ -27,34 +30,17 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
-
+            LogIn = TestContext.Parameters["webUrl"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             driver.Manage().Window.Maximize();
-            driver.Url = TestContext.Parameters["webUrl"].ToString();
+            driver.Url = LogIn;
         }
 
-        [Test]
-        [Category("Create")]
-
-        public void RegisterNotPossible()
-        {
-            string result = createUser.CreateNewWillType1(driver);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Steps/Prerequisites/ThankYou");
-        }
-
-
-        [Test]
-        [Category("Create")]
-        [TestCase(0, 0)]
-        
-        public void RegisterPossible(int estate, int ownwerhouse)
-        {
-            string result = createUser.CreateNewWillType0(driver, estate, ownwerhouse);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Dashboard/Summary?nextStep=1");
-        }
+     
 
         [TearDown]
         public void Close()
