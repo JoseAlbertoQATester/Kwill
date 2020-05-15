@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Kwill.Automation.Data\Kwill.Automation.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\..\..\Microsoft\Xamarin\NuGet\nunit\3.12.0\lib\netstandard2.0\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
