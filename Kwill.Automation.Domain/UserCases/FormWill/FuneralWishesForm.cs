@@ -49,7 +49,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             
         }
 
-        public int viewFuneralDetail(IWebDriver driver, int select)
+        public int ViewFuneralDetail(IWebDriver driver, int select)
         {
             if (!driver.FindElements(By.Id("FuneralVmInfo_FuneralTypeId"))[select].Selected)
             {

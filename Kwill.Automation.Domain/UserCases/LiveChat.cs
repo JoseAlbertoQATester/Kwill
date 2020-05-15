@@ -8,7 +8,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class Livechat
     {
-        public bool openLiveChat(IWebDriver driver)
+        public bool OpenLiveChat(IWebDriver driver)
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.ClassName("Linkify")));
             if (driver.FindElements(By.ClassName("Linkify")).Count > 0)
@@ -18,7 +18,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             return driver.FindElement(By.Id("app-portal")).Displayed;
         }
 
-        public string writerLiveChat(IWebDriver driver)
+        public string WriterLiveChat(IWebDriver driver)
         {
             driver.FindElement(By.TagName("textarea")).SendKeys("Hello!");
             driver.FindElement(By.ClassName("e10ozmh72")).Click();

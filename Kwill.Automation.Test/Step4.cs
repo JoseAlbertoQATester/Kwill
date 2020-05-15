@@ -7,6 +7,8 @@ using Kwill.Automation.Domain.UserCases;
 using Kwill.Automation.Domain.Repository;
 using Kwill.Automation.Domain.UserCases.FormWill;
 using PunditLeagueAutomation.Domain.Repository;
+using OpenQA.Selenium.Support.Extensions;
+using NUnit.Framework.Interfaces;
 
 namespace Kwill.Automation.Test
 {
@@ -19,6 +21,8 @@ namespace Kwill.Automation.Test
         public FuneralWishesForm funeralWishes = new FuneralWishesForm();
 
         public Generator generator = new Generator();
+
+        public Create_Report report = new Create_Report();
 
         public string webUrlDashboard;
 
@@ -62,10 +66,10 @@ namespace Kwill.Automation.Test
             Assert.AreNotEqual(value, 2, "Acces incorrect page");
             Assert.AreEqual(value, 0);
             funeralWishes.SelectEstateAccesStep4(driver);
-            value =funeralWishes.viewFuneralDetail(driver,select);
+            value =funeralWishes.ViewFuneralDetail(driver,select);
             Assert.AreNotEqual(value, 4, "Acces incorrect page");
             Assert.AreNotEqual(value,3,"Step Should be complet");
-            Assert.AreNotEqual(value,2,"Begin button should not be displayed");
+            Console.WriteLine("The email is not Sended"); Assert.AreNotEqual(value,2,"Begin button should not be displayed");
             Assert.AreNotEqual(value,1,"Funeral detail selected is not correct");
             Assert.AreEqual(value, 0);
 
@@ -76,6 +80,15 @@ namespace Kwill.Automation.Test
         {
             try
             {
+                if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+                {
+                    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString()+".png",ScreenshotImageFormat.Png);
+                    report.CreateRepor(
+                    TestContext.CurrentContext.Test.Name, 
+                    TestContext.CurrentContext.Result.Message,
+                    TestContext.CurrentContext.Test.Name.ToString()+".png");
+                }
+
                 driver.Close();
             }
             catch (Exception)

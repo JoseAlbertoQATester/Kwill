@@ -8,10 +8,15 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class GiftsAndYourEstateForm
     {
-        public string SelectEstateAccesStep3(IWebDriver driver)
+        public int SelectEstateAccesStep3(IWebDriver driver)
         {
             driver.FindElements(By.ClassName("btn-link"))[2].Click();
-            return driver.Url;
+
+            if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/EstateValue")
+            {
+                return 0;
+            }
+            return 1;
         }
 
         public void SelectEstate(IWebDriver driver)
@@ -35,35 +40,92 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
         }
 
+        public int SelectPropertyValueText(IWebDriver driver)
+        {
+            if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/PropertyValue")
+            {
+                driver.FindElement(By.Id("PropertyValueVM_PropertyValue")).SendKeys("one million-!$%,.");
+                driver.FindElement(By.Id("submitForm")).Click();
+                if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/AccountProperties")
+                {
+                    driver.FindElement(By.ClassName("btn-link")).Click();
+                    return 1;
+                }
+                return 0;
+            }
+            return 2;
+        }
+
         public void SelectPropertyValue(IWebDriver driver)
         {
+            driver.FindElement(By.Id("PropertyValueVM_PropertyValue")).Clear();
             driver.FindElement(By.Id("PropertyValueVM_PropertyValue")).SendKeys("10000");
             driver.FindElement(By.Id("submitForm")).Click();
         }
 
-        public void SelectPerson(IWebDriver driver)
+        public int SelectPerson(IWebDriver driver, int select)
         {
+            while (driver.FindElements(By.ClassName("active")).Count != 0)
+            {
+                driver.FindElements(By.ClassName("active"))[0].Click();
+            }
+
             if (driver.FindElements(By.ClassName("btn-person")).Count > 0)
             {
-                for (int i = 0; i < driver.FindElements(By.ClassName("btn-person")).Count; i++)
+                for (int i = 0; i < driver.FindElements(By.ClassName("btn-person")).Count - select; i++)
                 {
                     driver.FindElements(By.ClassName("btn-person"))[i].Click();
                 }
+                driver.FindElements(By.ClassName("btn-person"))[0].Click();
+                select = driver.FindElements(By.ClassName("active")).Count;
                 driver.FindElement(By.Id("submitForm")).Click();
             }
+            return select;
         }
 
-        public void AddGiftRecipient(IWebDriver driver)
+        public int AddGiftRecipientNumber(IWebDriver driver)
+        {
+            if (driver.Url == "http://beta.kwil.co.uk/Steps/Gifts/Gifts?nextStep=3")
+            {
+                driver.FindElements(By.Id("add-person"))[0].Click();
+                driver.FindElement(By.Id("PersonsInfo_FirstName")).SendKeys("10000");
+                driver.FindElement(By.Id("PersonsInfo_LastName")).SendKeys("10000");
+                driver.FindElement(By.Id("ddl_relationship")).SendKeys("Daughter");
+                driver.FindElement(By.Id("CurrentAddress")).SendKeys("10000");
+                driver.FindElement(By.Id("PersonsInfo_Address_Number")).SendKeys("10000");
+                driver.FindElement(By.Id("PersonsInfo_Address_Street")).SendKeys("10000");
+                driver.FindElement(By.Id("PersonsInfo_Address_Village")).SendKeys("10000");
+                driver.FindElement(By.Id("PersonsInfo_Address_City")).SendKeys("10000");
+                driver.FindElement(By.Id("SavePerson")).Click();
+
+                return driver.FindElements(By.ClassName("text-danger")).Count;
+            }
+            return 1;
+        }
+
+        public int AddGiftRecipient(IWebDriver driver)
         {
             driver.FindElements(By.Id("add-person"))[0].Click();
-            driver.FindElement(By.Id("PersonsInfo_FirstName")).SendKeys("10000");
-            driver.FindElement(By.Id("PersonsInfo_LastName")).SendKeys("10000");
-            driver.FindElement(By.Id("ddl_relationship")).SendKeys("10000");
-            driver.FindElement(By.Id("CurrentAddress")).SendKeys("10000");
-            driver.FindElement(By.Id("PersonsInfo_Address_Number")).SendKeys("10000");
-            driver.FindElement(By.Id("PersonsInfo_Address_Street")).SendKeys("10000");
-            driver.FindElement(By.Id("PersonsInfo_Address_Village")).SendKeys("10000");
-            driver.FindElement(By.Id("PersonsInfo_Address_City")).SendKeys("10000");
+            driver.FindElement(By.Id("PersonsInfo_FirstName")).SendKeys("Tester");
+            driver.FindElement(By.Id("PersonsInfo_LastName")).SendKeys("Test");
+            driver.FindElement(By.Id("ddl_relationship")).SendKeys("1");
+            driver.FindElement(By.Id("CurrentAddress")).SendKeys("AB10 1AF");
+            driver.FindElement(By.Id("PersonsInfo_Address_Number")).SendKeys("Marischal College");
+            driver.FindElement(By.Id("PersonsInfo_Address_Street")).SendKeys("Broad Street");
+            driver.FindElement(By.Id("PersonsInfo_Address_Village")).SendKeys("UK");
+            driver.FindElement(By.Id("PersonsInfo_Address_City")).SendKeys("ABERDEEN");
+
+            driver.FindElement(By.Id("SavePerson")).Click();
+
+            for (int i = 0; i < driver.FindElements(By.ClassName("person")).Count; i++)
+            {
+                if (driver.FindElements(By.ClassName("person"))[i].Text.Contains("Tester"))
+                {
+                    return 0;
+                }
+            }
+            return 1;
+
         }
 
         public void AddCharityGiftRecipient(IWebDriver driver)
