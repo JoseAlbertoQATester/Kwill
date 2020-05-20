@@ -6,18 +6,18 @@ using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.UserCases;
 using Kwill.Automation.Domain.Repository;
 using Kwill.Automation.Domain.UserCases.FormWill;
+using OpenQA.Selenium.Support.Extensions;
+using NUnit.Framework.Interfaces;
 
 namespace Kwill.Automation.Test
 {
     class LiveChat
     {
         public LogIn login = new LogIn();
-
         public LogOut logout = new LogOut();
-
         public Register register = new Register();
-
         public Livechat livechat = new Livechat();
+        public Create_Report report = new Create_Report();
 
         public string webUrlDashboard;
 
@@ -62,6 +62,16 @@ namespace Kwill.Automation.Test
         {
             try
             {
+                if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+                {
+                    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
+                    report.CreateRepor(
+                    TestContext.CurrentContext.Test.Name,
+                    TestContext.CurrentContext.Result.Message,
+                    TestContext.CurrentContext.Test.Name.ToString() + ".png"
+                    );
+                }
+
                 driver.Close();
             }
             catch (Exception)

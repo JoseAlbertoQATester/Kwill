@@ -41,7 +41,6 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
-
             select = generator.GenerarNumber(0, 2);
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
@@ -56,7 +55,6 @@ namespace Kwill.Automation.Test
 
         [Test]
         [Category("Step1")]
-
         public void Step4EndToEndOK()
         {
             login.LoginCaseOK(driver, Username, PasswordOK);

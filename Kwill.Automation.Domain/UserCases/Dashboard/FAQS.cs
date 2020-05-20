@@ -1,19 +1,29 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
 namespace Kwill.Automation.Domain.UserCases.Dashboard
 {
-    class FAQS
+    public class FAQS
     {
-        public string AccessFAQSPage(IWebDriver driver)
+        public bool AccessFAQSPage(IWebDriver driver)
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
-            driver.FindElements(By.ClassName(""))[2].Click();
-            return driver.Url;
+            driver.FindElements(By.Id("marketing-link"))[2].Click();
+            Assert.AreEqual(driver.Url, "http://beta.kwil.co.uk/FAQ", "Acces to incorrect page");
+
+            for (int i = 0; i < driver.FindElements(By.ClassName("fa-plus")).Count; i++)
+            {
+                Thread.Sleep(500);
+                driver.FindElements(By.ClassName("fa-plus"))[i].Click();
+                
+            }
+
+            return driver.FindElements(By.ClassName("fa-plus")).Count.Equals(driver.FindElements(By.ClassName("panel-body")).Count);
+            
         }
 
     }

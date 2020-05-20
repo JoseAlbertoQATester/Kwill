@@ -6,6 +6,8 @@ using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.UserCases;
 using Kwill.Automation.Domain.Repository;
 using Kwill.Automation.Domain.UserCases.FormWill;
+using OpenQA.Selenium.Support.Extensions;
+using NUnit.Framework.Interfaces;
 
 namespace Kwill.Automation.Test
 {
@@ -18,6 +20,8 @@ namespace Kwill.Automation.Test
 
         public Register register = new Register();
 
+        //public Create_Report report = new Create_Report();
+
         public TrusteesAndExecutorsForm trusteesAndExecutors = new TrusteesAndExecutorsForm();
 
         public string webUrlDashboard;
@@ -28,8 +32,6 @@ namespace Kwill.Automation.Test
         public string LogIn { get; private set; }
 
         public IWebDriver driver;
-
-
 
         [SetUp]
         public void Setup()
@@ -59,6 +61,15 @@ namespace Kwill.Automation.Test
         {
             try
             {
+                //    if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+                //    {
+                //        driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
+                //        report.CreateRepor(
+                //        TestContext.CurrentContext.Test.Name,
+                //        TestContext.CurrentContext.Result.Message,
+                //        TestContext.CurrentContext.Test.Name.ToString() + ".png"
+                //        );
+                //    }
                 driver.Close();
             }
             catch (Exception)

@@ -1,8 +1,4 @@
 ﻿using OpenQA.Selenium;
-using Kwill.Automation.Domain.Entities;
-using Kwill.Automation.Domain.Repository;
-using System.Threading;
-using reference = Kwill.Automation.Data.References.References;
 using PunditLeagueAutomation.Domain.Repository;
 using OpenQA.Selenium.Support.UI;
 using System;

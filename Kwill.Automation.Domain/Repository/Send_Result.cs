@@ -1,9 +1,4 @@
-﻿using Kwill.Automation.Data.Data;
-using Kwill.Automation.Data.Entities;
-using NUnit.Framework;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -14,18 +9,17 @@ namespace Kwill.Automation.Domain.Repository
     public class Send_Result
     {
         readonly SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-
-        readonly string[] emails = new string[] {
-        "josealbertolm13@gmail.com",
-        "JoseAlbertoLagos@socialicity.co.uk" };
-
+        readonly MailAddress from = new MailAddress("testervisualstudio@gmail.com");
+        readonly MailAddress to = new MailAddress("josealbertolm13@gmail.com");
+        readonly MailAddress cc1 = new MailAddress("josealbertolm13@outlook.com");
+        readonly MailAddress cc2 = new MailAddress("JoseAlbertoLagos@socialicity.co.uk");
+        readonly string filename = @"C:\Users\josealbertolagos\source\repos\Kwill\Kwill.Automation.Test\bin\Debug\netcoreapp3.1\ReportKwill.pdf";
 
         public void SendEmail()
         {
-
-            string filename = @"C:\Users\josealbertolagos\source\repos\Kwill\Kwill.Automation.Test\bin\Debug\netcoreapp3.1\Report.pdf";
-
+            MailMessage mail = new MailMessage(from, to);
             Attachment data = new Attachment(filename, MediaTypeNames.Application.Pdf);
+
             try
             {
                 // Use  serverr gmail SMTP  
@@ -36,17 +30,15 @@ namespace Kwill.Automation.Domain.Repository
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential("testervisualstudio@gmail.com", "1234rgH@");
 
-                for (int i = 1; i < emails.Length; i++)
-                {
-                    MailMessage mail = new MailMessage("testervisualstudio@gmail.com", emails[i]);
-                    mail.Subject = "Test Result";
-                    mail.Body = "Hello, I send you the test result of the day " + DateTime.Today.ToString();
-                    mail.BodyEncoding = UTF8Encoding.UTF8;
-                    mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                    mail.Attachments.Add(data);
+                mail.Subject = "Test Result";
+                mail.CC.Add(cc1);
+                mail.CC.Add(cc2);
+                mail.Body = "Hello, I send you the test result of the day " + DateTime.Today.ToString();
+                mail.BodyEncoding = UTF8Encoding.UTF8;
+                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                mail.Attachments.Add(data);
 
-                    client.Send(mail);
-                }
+                client.Send(mail);
 
             }
             catch (Exception)

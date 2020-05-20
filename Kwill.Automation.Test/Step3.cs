@@ -61,11 +61,11 @@ namespace Kwill.Automation.Test
             Assert.AreNotEqual(result, 2, "Access to incorrect page");
             giftsAndYourEstate.SelectPropertyValue(driver);
             result = giftsAndYourEstate.SelectPerson(driver, random);
-            Assert.AreEqual(result, 5-random, "Access to incorrect page");
+            Assert.AreEqual(result, 5 - random, "Access to incorrect page");
             result = giftsAndYourEstate.AddGiftRecipientNumber(driver);
             Assert.AreNotEqual(result, 1, "Access to incorrect page");
-            Assert.AreNotEqual(result, 8,"Validation is not working correctly");
-            result= giftsAndYourEstate.AddGiftRecipient(driver);
+            Assert.AreNotEqual(result, 8, "Validation is not working correctly");
+            result = giftsAndYourEstate.AddGiftRecipient(driver);
             Assert.AreNotEqual(result, 1, "Peron is not created");
 
         }
@@ -80,8 +80,10 @@ namespace Kwill.Automation.Test
                 if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
                 {
                     driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png");
-                    report.CreateRepor(TestContext.CurrentContext.Test.Name.ToString(), TestContext.CurrentContext.Result.Message.ToString(),
-                       TestContext.CurrentContext.Test.Name.ToString() + ".png");
+                    report.CreateRepor(
+                            TestContext.CurrentContext.Test.Name.ToString(),
+                            TestContext.CurrentContext.Result.Message.ToString(),
+                            TestContext.CurrentContext.Test.Name.ToString() + ".png");
                 }
 
                 driver.Close();
