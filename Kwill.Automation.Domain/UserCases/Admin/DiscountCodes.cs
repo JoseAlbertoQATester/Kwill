@@ -12,7 +12,7 @@ namespace Kwill.Automation.Domain.UserCases.Admin
             return driver.Url;
         }
 
-        public bool createCode(IWebDriver driver)
+        public bool CreateCode(IWebDriver driver)
         {
             Thread.Sleep(1000);
             driver.FindElement(By.ClassName("btn-primary")).Click();
@@ -38,7 +38,7 @@ namespace Kwill.Automation.Domain.UserCases.Admin
 
         }
 
-        public bool updateCode(IWebDriver driver)
+        public bool UpdateCode(IWebDriver driver)
         {
             for (int i = 1; i < driver.FindElements(By.ClassName("edit")).Count+1; i++)
             {

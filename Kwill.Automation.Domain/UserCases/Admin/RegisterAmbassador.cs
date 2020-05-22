@@ -1,7 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Kwill.Automation.Domain.UserCases.Admin
 {
@@ -70,13 +67,13 @@ namespace Kwill.Automation.Domain.UserCases.Admin
             driver.FindElement(By.Id("Vm_ConfirmPassword")).Clear();
             driver.FindElement(By.Id("Vm_Name")).SendKeys("Jonh");
             driver.FindElement(By.Id("Vm_LastName")).SendKeys("Gonzalez");
-            driver.FindElement(By.Id("Vm_UserName")).SendKeys("JonhGnz");
-            driver.FindElement(By.Id("Vm_Email")).SendKeys("JonhGnz@Kwill");
-            driver.FindElement(By.Id("Vm_AmbassadorMobile")).SendKeys("6452137458");
+            driver.FindElement(By.Id("Vm_UserName")).SendKeys("JonhG");
+            driver.FindElement(By.Id("Vm_Email")).SendKeys("JonhGnz@Kwill.co.uk");
+            driver.FindElement(By.Id("Vm_AmbassadorMobile")).SendKeys("07645213745");
             driver.FindElement(By.Id("Vm_BankName")).SendKeys("BBVA");
             driver.FindElement(By.Id("Vm_AccountName")).SendKeys("Jonh");
-            driver.FindElement(By.Id("Vm_AccountNumber")).SendKeys("4444333322221111");
-            driver.FindElement(By.Id("Vm_SortCode")).SendKeys("111");
+            driver.FindElement(By.Id("Vm_AccountNumber")).SendKeys("44443333");
+            driver.FindElement(By.Id("Vm_SortCode")).SendKeys("00-33-55");
             driver.FindElement(By.Id("Vm_TownCity")).SendKeys("Aberavon");
             driver.FindElement(By.Id("Vm_Password")).SendKeys("123456");
             driver.FindElement(By.Id("Vm_ConfirmPassword")).SendKeys("123456");

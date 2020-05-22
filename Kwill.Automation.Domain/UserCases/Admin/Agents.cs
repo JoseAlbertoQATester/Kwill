@@ -14,7 +14,7 @@ namespace Kwill.Automation.Domain.UserCases.Admin
             return driver.Url;
         }
 
-        public bool createAgent(IWebDriver driver)
+        public bool CreateAgent(IWebDriver driver)
         {
             Thread.Sleep(1000);
             driver.FindElement(By.ClassName("btn-primary")).Click();
@@ -38,7 +38,7 @@ namespace Kwill.Automation.Domain.UserCases.Admin
 
         }
 
-        public bool updateAgent(IWebDriver driver)
+        public bool UpdateAgent(IWebDriver driver)
         {
             for (int i = 1; i < driver.FindElements(By.ClassName("edit")).Count+1; i++)
             {
