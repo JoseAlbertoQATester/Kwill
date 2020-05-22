@@ -97,15 +97,15 @@ namespace Kwill.Automation.Test
         {
             try
             {
-                if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
-                {
-                    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
-                    report.CreateRepor(
-                    TestContext.CurrentContext.Test.Name,
-                    TestContext.CurrentContext.Result.Message,
-                    TestContext.CurrentContext.Test.Name.ToString() + ".png"
-                    );
-                }
+            //    if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+            //    {
+            //        driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
+            //        report.CreateRepor(
+            //        TestContext.CurrentContext.Test.Name,
+            //        TestContext.CurrentContext.Result.Message,
+            //        TestContext.CurrentContext.Test.Name.ToString() + ".png"
+            //        );
+            //    }
 
                 driver.Close();
             }

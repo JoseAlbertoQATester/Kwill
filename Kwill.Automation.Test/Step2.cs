@@ -50,10 +50,19 @@ namespace Kwill.Automation.Test
         [Test]
         [Category("Step2")]
 
-        public void Step1EndNotLegalGuardian()
+        public void Step1EndNotLegalGuardianAndNotTrustees()
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
-            trusteesAndExecutors.SelectEstateAccesStep2(driver);
+            trusteesAndExecutors.NotLegalGuardianNotTrustee(driver);
+        }
+
+        [Test]
+        [Category("Step2")]
+
+        public void Step1EndWithLegalGuardianAndTrustees ()
+        {
+            login.LoginCaseOK(driver, Username, PasswordOK);
+            trusteesAndExecutors.LegalGuardianAndTrustee(driver);
         }
 
         [TearDown]

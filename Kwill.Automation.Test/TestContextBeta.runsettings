@@ -12,9 +12,8 @@
 		<Parameter name="DashBoard" value="http://beta.kwil.co.uk/Dashboard/Summary?isEdit=True" />
 		<Parameter name="user" value="tester@test.com" />
 		<Parameter name="passwordOK" value="123456" />
-		<Parameter name="adminUser" value="admin@admin.com" />
-		<Parameter name="adminPasswordOK" value="Zagzig20!9!" />
-		<Parameter name="userSecondary" value="tester1@test.com" />
+		<Parameter name="adminUser" value="admin@kwil.co.uk" />
+		<Parameter name="adminPasswordOK" value="18!chicken" />
 		<Parameter name="driverPath" value="C:\Users\josealbertolagos\source\repos\PunditLeagueAutomation" />
 		<Parameter name="passwordOK" value="1234rgH@" />
 		<Parameter name="passwordKO" value="11111111" />

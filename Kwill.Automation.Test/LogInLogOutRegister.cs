@@ -19,6 +19,10 @@ namespace Kwill.Automation.Test
         public string webUrlDashboard;
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
+
+        private string adminUser;
+        private string adminPasswordOK;
+
         public string LogIn { get; private set; }
         public IWebDriver driver;
         string result;
@@ -30,6 +34,8 @@ namespace Kwill.Automation.Test
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
+            adminUser = TestContext.Parameters["adminUser"].ToString();
+            adminPasswordOK = TestContext.Parameters["adminPasswordOK"].ToString();
             LogIn = TestContext.Parameters["webUrl"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
@@ -50,8 +56,8 @@ namespace Kwill.Automation.Test
         [Category("LogIn")]
         public void Admin_LogIn_Test_OK()
         {
-            result = login.LoginCaseOK(driver, Username, PasswordOK);
-            Assert.AreEqual(webUrlDashboard, result);
+            result = login.LoginCaseOK(driver, adminUser, adminPasswordOK);
+            Assert.IsTrue( result.Contains("http://beta.kwil.co.uk/Admin/Dashboard"));
         }
 
         [Test]
@@ -93,15 +99,15 @@ namespace Kwill.Automation.Test
         {
             try
             {
-                if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
-                {
-                    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
-                    report.CreateRepor(
-                    TestContext.CurrentContext.Test.Name,
-                    TestContext.CurrentContext.Result.Message,
-                    TestContext.CurrentContext.Test.Name.ToString() + ".png"
-                    );
-                }
+                //if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+                //{
+                //    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
+                //    report.CreateRepor(
+                //    TestContext.CurrentContext.Test.Name,
+                //    TestContext.CurrentContext.Result.Message,
+                //    TestContext.CurrentContext.Test.Name.ToString() + ".png"
+                //    );
+                //}
 
                 driver.Close();
             }
