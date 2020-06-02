@@ -33,6 +33,8 @@ namespace Kwill.Automation.Test
 
         public IWebDriver driver;
 
+        public string Environment { get; private set; }
+
         public  int select;
 
         public int value;
@@ -41,6 +43,7 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             select = generator.GenerarNumber(0, 2);
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
@@ -59,12 +62,12 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             funeralWishes.SelectEstateAccesStep4(driver);
-            value = funeralWishes.SelectFuneralDetail(driver,select);
+            value = funeralWishes.SelectFuneralDetail(driver,select, Environment);
             Assert.AreNotEqual(value, 1, "Step Should be complet");
             Assert.AreNotEqual(value, 2, "Acces incorrect page");
             Assert.AreEqual(value, 0);
             funeralWishes.SelectEstateAccesStep4(driver);
-            value =funeralWishes.ViewFuneralDetail(driver,select);
+            value =funeralWishes.ViewFuneralDetail(driver,select, Environment);
             Assert.AreNotEqual(value, 4, "Acces incorrect page");
             Assert.AreNotEqual(value,3,"Step Should be complet");
             Console.WriteLine("The email is not Sended"); Assert.AreNotEqual(value,2,"Begin button should not be displayed");

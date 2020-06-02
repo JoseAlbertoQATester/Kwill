@@ -16,12 +16,21 @@ namespace Kwill.Automation.Test
         public LogOut logout = new LogOut();
         public Register register = new Register();
         public Create_Report report = new Create_Report();
+
+        public string Environment { get; private set; }
+
         public string webUrlDashboard;
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
 
         private string adminUser;
         private string adminPasswordOK;
+        private string ambassadorPasswordOK;
+        private string affiliateUser;
+        private string affiliatePasswordOK;
+        private string agentUser;
+        private string agentPasswordOK;
+        private string ambassadorUser;
 
         public string LogIn { get; private set; }
         public IWebDriver driver;
@@ -31,11 +40,18 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
             adminUser = TestContext.Parameters["adminUser"].ToString();
             adminPasswordOK = TestContext.Parameters["adminPasswordOK"].ToString();
+            agentUser = TestContext.Parameters["agentUser"].ToString();
+            agentPasswordOK = TestContext.Parameters["agentPasswordOK"].ToString();
+            ambassadorUser = TestContext.Parameters["ambassadorUser"].ToString();
+            ambassadorPasswordOK = TestContext.Parameters["ambassadorPasswordOK"].ToString();
+            affiliateUser = TestContext.Parameters["affiliateUser"].ToString();
+            affiliatePasswordOK = TestContext.Parameters["affiliatePasswordOK"].ToString();
             LogIn = TestContext.Parameters["webUrl"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
@@ -57,23 +73,31 @@ namespace Kwill.Automation.Test
         public void Admin_LogIn_Test_OK()
         {
             result = login.LoginCaseOK(driver, adminUser, adminPasswordOK);
-            Assert.IsTrue( result.Contains("http://beta.kwil.co.uk/Admin/Dashboard"));
+            Assert.IsTrue( result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
         }
 
         [Test]
         [Category("LogIn")]
         public void Ambassador_LogIn_Test_OK()
         {
-            result = login.LoginCaseOK(driver, Username, PasswordOK);
-            Assert.AreEqual(webUrlDashboard, result);
+            result = login.LoginCaseOK(driver, ambassadorUser, ambassadorPasswordOK);
+            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Ambassador/"));
         }
 
         [Test]
         [Category("LogIn")]
         public void Affiliate_LogIn_Test_OK()
         {
-            result = login.LoginCaseOK(driver, Username, PasswordOK);
-            Assert.AreEqual(webUrlDashboard, result);
+            result = login.LoginCaseOK(driver, affiliateUser, affiliatePasswordOK);
+            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/AffiliateAdmin/Dashboard"));
+        }
+
+        [Test]
+        [Category("LogIn")]
+        public void Agent_LogIn_Test_OK()
+        {
+            result = login.LoginCaseOK(driver, agentUser, agentPasswordOK);
+            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
         }
 
         [Test]

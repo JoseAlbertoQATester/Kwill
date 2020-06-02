@@ -11,7 +11,7 @@ namespace Kwill.Automation.Domain.UserCases.Admin
         {
             driver.FindElements(By.ClassName("nav-item"))[3].Click();
             return driver.Url;
-            //should be http://beta.kwil.co.uk/Admin/AddAffiliate
+           
         }
 
         public int RegisterEmptyAffiliate(IWebDriver driver)

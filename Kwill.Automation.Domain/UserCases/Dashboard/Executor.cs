@@ -8,12 +8,12 @@ namespace Kwill.Automation.Domain.UserCases.Dashboard
 {
     public class Executor
     {
-        public bool AccessExecutorPage(IWebDriver driver)
+        public bool AccessExecutorPage(IWebDriver driver, string Environment)
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
             driver.FindElements(By.Id("marketing-link"))[3].Click();
-            Assert.AreEqual( driver.Url, "http://beta.kwil.co.uk/executor", "Acces to incorrect page");
+            Assert.AreEqual( driver.Url, "http://" + Environment + "kwil.co.uk/executor", "Acces to incorrect page");
 
             for(int i=0;i<driver.FindElements(By.ClassName("fa-plus")).Count ;i++ )
             {

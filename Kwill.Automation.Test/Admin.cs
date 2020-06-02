@@ -28,6 +28,7 @@ namespace Kwill.Automation.Test
 
 
         public string AdminUser { get; private set; }
+        public string Environment { get; private set; }
         public string AdminPasswordOK { get; private set; }
         public bool result;
         public string LogIn { get; private set; }
@@ -40,6 +41,7 @@ namespace Kwill.Automation.Test
         public void Setup()
         {
             AdminUser = TestContext.Parameters["adminUser"].ToString();
+            Environment = TestContext.Parameters["environment"].ToString();
             AdminPasswordOK = TestContext.Parameters["adminPasswordOK"].ToString();
             LogIn = TestContext.Parameters["webUrl"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
@@ -54,7 +56,7 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, AdminUser, AdminPasswordOK);
             url=registerAmbassador.AccesRegisterAmbassador(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/RegisterAmbassador", url, "Page incorrcet");
+            Assert.AreEqual("http://"+Environment+"kwil.co.uk/Admin/RegisterAmbassador", url, "Page incorrcet");
             alert=registerAmbassador.RegisterEmptyAmbassador(driver);
             Assert.IsTrue(alert.Equals(1), "Validation not working");
             alert=registerAmbassador.RegisterInvalidmbassador(driver);
@@ -62,7 +64,7 @@ namespace Kwill.Automation.Test
             alert=registerAmbassador.RegisterCorrectAmbassador(driver);
             Assert.IsTrue(alert.Equals(0), "Validation not working");
             viewAmbassadors.AccesViewAmbassador(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/Ambassadors", url, "Page incorrcet");
+            Assert.AreEqual("http://" + Environment + "kwil.co.uk/Admin/Ambassadors", url, "Page incorrcet");
             viewAmbassadors.FiltrerByToday(driver);
             Assert.IsTrue(alert.CompareTo(1).Equals(1), "Filter not working");
             viewAmbassadors.FilterByName(driver, "hola");
@@ -80,7 +82,7 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, AdminUser, AdminPasswordOK);
             url = addAffiliate.AccesRegisterAffiliate(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/AddAffiliate", url, "Page incorrcet");
+            Assert.AreEqual("http://" + Environment + "kwil.co.uk/Admin/AddAffiliate", url, "Page incorrcet");
             alert = addAffiliate.RegisterEmptyAffiliate(driver);
             Assert.IsTrue(alert.Equals(1), "Validation not working");
             alert = addAffiliate.RegisterInvalidmbAffiliate(driver);
@@ -88,7 +90,7 @@ namespace Kwill.Automation.Test
             alert = addAffiliate.RegisterCorrectAffiliate(driver);
             Assert.IsTrue(alert.Equals(0), "Validation not working");
             url = viewAffiliates.AccesViewAffiliate(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/Affiliates", url, "Page incorrcet");
+            Assert.AreEqual("http://" + Environment + "kwil.co.uk/Admin/Affiliates", url, "Page incorrcet");
             alert = viewAffiliates.FiltrerByToday(driver);
             Assert.IsTrue(alert.Equals(1), "Filter not working");
             alert = viewAffiliates.FilterByName(driver, "Astrid");
@@ -107,7 +109,7 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, AdminUser, AdminPasswordOK);
             url = discountCodes.AccesDiscountCode(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/DiscountCodes", url, "Page incorrcet");
+            Assert.AreEqual("http://" + Environment + "kwil.co.uk/Admin/DiscountCodes", url, "Page incorrcet");
             result = discountCodes.CreateCode(driver);
             Assert.IsTrue(result, "code is not create");
             result = discountCodes.UpdateCode(driver);
@@ -122,7 +124,7 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, AdminUser, AdminPasswordOK);
             url = agents.AccesAgent(driver);
-            Assert.AreEqual("http://beta.kwil.co.uk/Admin/Agents", url, "Page incorrcet");
+            Assert.AreEqual("http://" + Environment + "kwil.co.uk/Admin/Agents", url, "Page incorrcet");
             result = agents.CreateAgent(driver);
             Assert.IsTrue(result, "Agent is not create");
             result = agents.UpdateAgent(driver);

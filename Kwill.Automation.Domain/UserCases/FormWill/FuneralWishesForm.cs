@@ -13,9 +13,9 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             driver.FindElements(By.ClassName("btn-link"))[3].Click();
         }
 
-        public int SelectFuneralDetail(IWebDriver driver, int select)
+        public int SelectFuneralDetail(IWebDriver driver, int select, string Environment)
         {
-            if (driver.Url == "http://beta.kwil.co.uk/Steps/Funeral/Funeral")
+            if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/Funeral/Funeral")
             {
                 if (select == 0)
                 {
@@ -49,14 +49,14 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             
         }
 
-        public int ViewFuneralDetail(IWebDriver driver, int select)
+        public int ViewFuneralDetail(IWebDriver driver, int select,string Environment)
         {
             if (!driver.FindElements(By.Id("FuneralVmInfo_FuneralTypeId"))[select].Selected)
             {
                 return 1;
             }
             driver.FindElement(By.ClassName("btn-link")).Click();
-            if (!driver.Url.Contains("http://beta.kwil.co.uk/Dashboard/Summary"))
+            if (!driver.Url.Contains("http://" + Environment + "kwil.co.uk/Dashboard/Summary"))
             {
                 return 3;
             }

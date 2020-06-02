@@ -9,64 +9,48 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
     public class PersonalDetailForm
     {
         readonly Generator generator = new Generator();
-
         readonly CustomerEntity customer = new CustomerEntity();
-
         readonly PartnerEntity partner = new PartnerEntity();
-
         readonly ChildrenEntity children = new ChildrenEntity();
-
         readonly PetEntity pet = new PetEntity();
-
         string name;
+
         public void SelectEstateAccesStep1(IWebDriver driver)
         {
             driver.FindElements(By.ClassName("btn-link"))[0].Click();
         }
 
-        public CustomerEntity step1Customer(IWebDriver driver)
+        public CustomerEntity step1Customer(IWebDriver driver,string partner)
         {
             name = generator.GeneratorString();
 
-
-            driver.FindElement(By.Id("CustomerInfo_FirstName")).Clear();
-            driver.FindElement(By.Id("CustomerInfo_MiddleName")).Clear();
-            driver.FindElement(By.Id("CustomerInfo_LastName")).Clear();
+            driver.FindElement(By.Id("firstname")).Clear();
+            driver.FindElement(By.Id("middlename")).Clear();
+            driver.FindElement(By.Id("lastname")).Clear();
             driver.FindElement(By.Id("CurrentAddress")).Clear();
-            driver.FindElement(By.Id("CustomerInfo_Address_Number")).Clear();
-            driver.FindElement(By.Id("CustomerInfo_Address_Street")).Clear();
+            driver.FindElement(By.Id("CurrentAddress")).Clear();
+            driver.FindElement(By.Id("address1")).Clear();
+            driver.FindElement(By.Id("address2")).Clear();
             driver.FindElement(By.Id("CustomerInfo_Address_Village")).Clear();
             driver.FindElement(By.Id("CustomerInfo_Address_City")).Clear();
-            driver.FindElement(By.Id("CustomerInfo_Telephone")).Clear();
+            driver.FindElement(By.Id("Customerphone")).Clear();
 
+            driver.FindElement(By.Id("firstname")).SendKeys(name);
+            driver.FindElement(By.Id("middlename")).SendKeys(name);
+            driver.FindElement(By.Id("lastname")).SendKeys(name);
 
-            driver.FindElement(By.Id("CustomerInfo_FirstName")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_MiddleName")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_LastName")).SendKeys(name);
+            driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Day")).SendKeys("1");
+            driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Month")).SendKeys("1");
+            driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Year")).SendKeys("2002");
 
-
-            IWebElement day = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Day"));
-            SelectElement dayselect = new SelectElement(day);
-            dayselect.SelectByValue("1");
-
-            IWebElement moth = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Month"));
-            SelectElement mothselect = new SelectElement(moth);
-            mothselect.SelectByValue("1");
-
-            IWebElement year = driver.FindElement(By.Id("ddl_maritalstatus"));
-            SelectElement yearselect = new SelectElement(year);
-            yearselect.SelectByText("2002");
-
-            IWebElement maritalstatus = driver.FindElement(By.Id("ddl_maritalstatus"));
-            SelectElement selectElement = new SelectElement(maritalstatus);
-            selectElement.SelectByValue("633976ac-1367-42cc-812e-cbfcbbefc789");
-
-            driver.FindElement(By.Id("CurrentAddress")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Number")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Street")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Village")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_City")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Telephone")).SendKeys(name);
+            driver.FindElement(By.Id("ddl_maritalstatus")).SendKeys(partner);
+            
+            driver.FindElement(By.Id("CurrentAddress")).SendKeys("E10 5AB");
+            driver.FindElement(By.Id("address1")).SendKeys("731a");
+            driver.FindElement(By.Id("address2")).SendKeys("High Road Leyton");
+            driver.FindElement(By.Id("CustomerInfo_Address_Village")).SendKeys("AAAA");
+            driver.FindElement(By.Id("CustomerInfo_Address_City")).SendKeys("ABERDEEN");
+            driver.FindElement(By.Id("Customerphone")).SendKeys("07765121236");
             driver.FindElement(By.Id("submitForm")).Click();
 
             return customer;
@@ -75,33 +59,20 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         public string step1Partner(IWebDriver driver)
         {
             name = generator.GeneratorString();
-            driver.FindElement(By.Id("add-person")).Click();
-            driver.FindElement(By.Id("firstName")).SendKeys(name);
-            driver.FindElement(By.Id("lastName")).SendKeys(name);
 
-            IWebElement relation = driver.FindElement(By.Id("ddl_relationship"));
-            SelectElement selectElement = new SelectElement(relation);
-            selectElement.SelectByValue("Son");
+            driver.FindElement(By.Id("firstname")).Clear();
+            driver.FindElement(By.Id("lastname")).Clear();
+            driver.FindElement(By.Id("firstname")).SendKeys(name);
+            driver.FindElement(By.Id("lastname")).SendKeys(name);
 
-            IWebElement day = driver.FindElement(By.Id("dobDay"));
-            SelectElement dayselect = new SelectElement(day);
-            dayselect.SelectByValue("1");
+            
+            driver.FindElement(By.Id("PartnerInfo_DateOfBirth_Day")).SendKeys("1");
+            driver.FindElement(By.Id("PartnerInfo_DateOfBirth_Month")).SendKeys("1");
+            driver.FindElement(By.Id("PartnerInfo_DateOfBirth_Year")).SendKeys("1995");
 
-            IWebElement moth = driver.FindElement(By.Id("dobMonth"));
-            SelectElement mothselect = new SelectElement(moth);
-            mothselect.SelectByValue("1");
+            driver.FindElement(By.Id("IsAddressSame")).Click();
 
-            IWebElement year = driver.FindElement(By.Id("dobYear"));
-            SelectElement yearselect = new SelectElement(year);
-            yearselect.SelectByValue("1995");
-
-            driver.FindElement(By.Id("CurrentAddress")).SendKeys(name);
-            driver.FindElement(By.Id("Number")).SendKeys("10");
-            driver.FindElement(By.Id("Street")).SendKeys(name);
-            driver.FindElement(By.Id("Village")).SendKeys(name);
-            driver.FindElement(By.Id("City")).SendKeys(name);
-
-            driver.FindElements(By.ClassName("btn-block"))[0].Click();
+            driver.FindElement(By.Id("submitForm")).Click();
 
             return driver.Url;
         }
@@ -109,42 +80,25 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         public void step1ChildrenExist(IWebDriver driver, int children)
         {
             driver.FindElements(By.ClassName("signup"))[children].Click();
+
+            if (children == 1 && driver.FindElement(By.Id("modalRemove")).Displayed)
+            {
+                driver.FindElement(By.ClassName("btn-info")).Click();
+            }
         }
 
         public ChildrenEntity step1AddChildren(IWebDriver driver)
         {
             name = generator.GeneratorString();
-
             driver.FindElement(By.Id("add-person")).Click();
-            driver.FindElements(By.ClassName("btn-block"))[1].Click();
-            driver.FindElement(By.Id("add-person")).Click();
-
-            driver.FindElement(By.Id("CustomerInfo_FirstName")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_MiddleName")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_LastName")).SendKeys(name);
-
-            IWebElement maritalstatus = driver.FindElement(By.Id("ddl_maritalstatus"));
-            SelectElement selectElement = new SelectElement(maritalstatus);
-            selectElement.SelectByValue("Married");
-
-            IWebElement day = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Day"));
-            SelectElement dayselect = new SelectElement(day);
-            dayselect.SelectByValue("1");
-
-            IWebElement moth = driver.FindElement(By.Id("CustomerInfo_DateOfBirth_Month"));
-            SelectElement mothselect = new SelectElement(moth);
-            mothselect.SelectByValue("1");
-
-            IWebElement year = driver.FindElement(By.Id("ddl_maritalstatus"));
-            SelectElement yearselect = new SelectElement(year);
-            yearselect.SelectByValue("1995");
-
-            driver.FindElement(By.Id("CurrentAddress")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Number")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Street")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_Village")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Address_City")).SendKeys(name);
-            driver.FindElement(By.Id("CustomerInfo_Telephone")).SendKeys(name);
+            driver.FindElement(By.Id("firstName")).SendKeys(name);
+            driver.FindElement(By.Id("lastName")).SendKeys(name);
+            driver.FindElement(By.Id("ddl_relationship")).SendKeys("Son");
+            driver.FindElement(By.Id("dobDay")).SendKeys("1");
+            driver.FindElement(By.Id("dobMonth")).SendKeys("January"); 
+            driver.FindElement(By.Id("dobYear")).SendKeys("1995"); 
+            driver.FindElement(By.Id("IsAddressSame")).Click();
+            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
             driver.FindElement(By.Id("submitForm")).Click();
 
             return children;
@@ -153,20 +107,26 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         public void step1PetExist(IWebDriver driver, int pet)
         {
             driver.FindElements(By.ClassName("signup"))[pet].Click();
+
+            if (pet == 1 && driver.Url.Contains("PetsExisting") && driver.FindElement(By.Id("modalRemove")).Displayed)
+            {
+                driver.FindElement(By.ClassName("btn-info")).Click();
+            }
         }
 
-        public ChildrenEntity step1AddPet(IWebDriver driver)
+        public PetEntity step1AddPet(IWebDriver driver)
         {
             name = generator.GeneratorString();
 
             driver.FindElement(By.Id("add-person")).Click();
-            driver.FindElements(By.ClassName("btn-block"))[1].Click();
-            driver.FindElement(By.Id("add-person")).Click();
-
             driver.FindElement(By.Id("petName")).SendKeys(name);
             driver.FindElement(By.Id("petType")).SendKeys(name);
 
-            return children;
+            driver.FindElements(By.ClassName("btn-primary"))[0].Click();
+
+            driver.FindElement(By.Id("submitForm")).Click();
+
+            return pet;
         }
 
         public PetEntity step1EditPet(IWebDriver driver)
@@ -174,11 +134,13 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             name = generator.GeneratorString();
 
             driver.FindElement(By.Id("add-person")).Click();
-            driver.FindElements(By.ClassName("btn-block"))[1].Click();
-            driver.FindElement(By.Id("add-person")).Click();
 
             driver.FindElement(By.Id("petName")).SendKeys(name);
             driver.FindElement(By.Id("petType")).SendKeys(name);
+
+            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
+
+            driver.FindElement(By.Id("submitForm")).Click();
 
             return pet;
         }
@@ -201,7 +163,6 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
         public int step1DeleteOnePet(IWebDriver driver)
         {
-
             driver.FindElements(By.ClassName("edit"))[1].Click();
 
             driver.FindElements(By.ClassName("edit"))[1].Click();

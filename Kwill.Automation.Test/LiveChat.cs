@@ -19,6 +19,8 @@ namespace Kwill.Automation.Test
         public Livechat livechat = new Livechat();
         public Create_Report report = new Create_Report();
 
+        public string Environment { get; private set; }
+
         public string webUrlDashboard;
 
         public string Username { get; private set; }
@@ -34,6 +36,7 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
@@ -44,7 +47,7 @@ namespace Kwill.Automation.Test
             driver.Url = LogIn;
         }
 
-        [Test]
+       //[Test]
         [Category("LiveChat")]
         public void Review_UseLiveChat()
         {

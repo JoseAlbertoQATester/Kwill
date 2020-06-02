@@ -8,11 +8,11 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class GiftsAndYourEstateForm
     {
-        public int SelectEstateAccesStep3(IWebDriver driver)
+        public int SelectEstateAccesStep3(IWebDriver driver,string Environment)
         {
             driver.FindElements(By.ClassName("btn-link"))[2].Click();
 
-            if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/EstateValue")
+            if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/AccountProperties/EstateValue")
             {
                 return 0;
             }
@@ -40,13 +40,13 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 
         }
 
-        public int SelectPropertyValueText(IWebDriver driver)
+        public int SelectPropertyValueText(IWebDriver driver, string Environment)
         {
-            if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/PropertyValue")
+            if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/AccountProperties/PropertyValue")
             {
                 driver.FindElement(By.Id("PropertyValueVM_PropertyValue")).SendKeys("one million-!$%,.");
                 driver.FindElement(By.Id("submitForm")).Click();
-                if (driver.Url == "http://beta.kwil.co.uk/Steps/AccountProperties/AccountProperties")
+                if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/AccountProperties/AccountProperties")
                 {
                     driver.FindElement(By.ClassName("btn-link")).Click();
                     return 1;
@@ -83,9 +83,9 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             return select;
         }
 
-        public int AddGiftRecipientNumber(IWebDriver driver)
+        public int AddGiftRecipientNumber(IWebDriver driver,string Environment)
         {
-            if (driver.Url == "http://beta.kwil.co.uk/Steps/Gifts/Gifts?nextStep=3")
+            if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/Gifts/Gifts?nextStep=3")
             {
                 driver.FindElements(By.Id("add-person"))[0].Click();
                 driver.FindElement(By.Id("PersonsInfo_FirstName")).SendKeys("10000");

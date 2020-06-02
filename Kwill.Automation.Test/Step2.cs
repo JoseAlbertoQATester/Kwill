@@ -24,6 +24,8 @@ namespace Kwill.Automation.Test
 
         public TrusteesAndExecutorsForm trusteesAndExecutors = new TrusteesAndExecutorsForm();
 
+        public string Environment { get; private set; }
+
         public string webUrlDashboard;
 
         public string Username { get; private set; }
@@ -36,6 +38,7 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             webUrlDashboard = TestContext.Parameters["DashBoard"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();

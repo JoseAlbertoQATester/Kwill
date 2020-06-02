@@ -23,6 +23,7 @@ namespace Kwill.Automation.Test
 
         public Create_Report report = new Create_Report();
 
+        public string Environment { get; private set; }
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
         public string LogIn { get; private set; }
@@ -35,6 +36,7 @@ namespace Kwill.Automation.Test
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
             LogIn = TestContext.Parameters["webUrl"].ToString();
@@ -51,18 +53,18 @@ namespace Kwill.Automation.Test
         {
             int random = generor.GenerarNumber(0, 5);
             login.LoginCaseOK(driver, Username, PasswordOK);
-            result = giftsAndYourEstate.SelectEstateAccesStep3(driver);
+            result = giftsAndYourEstate.SelectEstateAccesStep3(driver, Environment);
             Assert.AreNotEqual(result, 1, "Page displayed is incorrect");
             result = giftsAndYourEstate.SelectVoidEstate(driver);
             Assert.AreEqual(result, 1, "Validation is not displayed");
             giftsAndYourEstate.SelectEstate(driver);
-            result = giftsAndYourEstate.SelectPropertyValueText(driver);
+            result = giftsAndYourEstate.SelectPropertyValueText(driver, Environment);
             Assert.AreNotEqual(result, 1, "It is possible entry text value");
             Assert.AreNotEqual(result, 2, "Access to incorrect page");
             giftsAndYourEstate.SelectPropertyValue(driver);
             result = giftsAndYourEstate.SelectPerson(driver, random);
             Assert.AreEqual(result, 5 - random, "Access to incorrect page");
-            result = giftsAndYourEstate.AddGiftRecipientNumber(driver);
+            result = giftsAndYourEstate.AddGiftRecipientNumber(driver, Environment);
             Assert.AreNotEqual(result, 1, "Access to incorrect page");
             Assert.AreNotEqual(result, 8, "Validation is not working correctly");
             result = giftsAndYourEstate.AddGiftRecipient(driver);

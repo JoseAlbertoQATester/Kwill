@@ -16,14 +16,19 @@ namespace Kwill.Automation.Test
         public CreateUser createUser = new CreateUser();
         public Repository repository = new Repository();
         public Create_Report report = new Create_Report();
+
+        public string Environment { get; private set; }
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
+        public string result;
+        public int count;
         public IWebDriver driver;
 
 
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
@@ -37,19 +42,34 @@ namespace Kwill.Automation.Test
 
         public void RegisterNotPossible()
         {
-            string result = createUser.CreateNewWillType1(driver);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Steps/Prerequisites/ThankYou");
+            result = createUser.CreateNewWillType1(driver);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Steps/Prerequisites/ThankYou", "Page displayed is incorrect");
         }
 
 
         [Test]
         [Category("Create")]
-        [TestCase(0, 0)]
-        
-        public void RegisterPossible(int estate, int ownwerhouse)
+
+        public void RegisterPossibleOwner()
         {
-            string result = createUser.CreateNewWillType0(driver, estate, ownwerhouse);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/Dashboard/Summary?nextStep=1");
+            result = createUser.CreateNewWillType0(driver, 0);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Dashboard/Summary?nextStep=1", "Page displayed is incorrect");
+            count = createUser.validateBeginbuttonStart(driver);
+            Assert.AreEqual(count, 6,"All step are not in begin state");
+            result = createUser.validateOwnerpage(driver);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Steps/AccountProperties/PropertyValue", "Page displayed is incorrect");
+        }
+
+        [Test]
+        [Category("Create")]
+        public void RegisterPossibleNotOwner()
+        {
+            result = createUser.CreateNewWillType0(driver, 1);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Dashboard/Summary?nextStep=1", "Page displayed is incorrect");
+            count = createUser.validateBeginbuttonStart(driver);
+            Assert.AreEqual(count, 6, "All step are not in begin state");
+            result = createUser.validateOwnerpage(driver);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Steps/AccountProperties/AccountProperties", "Page displayed is incorrect");
         }
 
         [TearDown]

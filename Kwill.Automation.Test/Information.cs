@@ -7,29 +7,33 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium.Support.Extensions;
 using Kwill.Automation.Domain.Repository;
 using System.IO;
+using Kwill.Automation.Domain.UserCases;
 
 namespace Kwill.Automation.Test
 {
     class Information
     {
+        public string Environment { get; private set; }
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
         public IWebDriver driver;
+        readonly LogIn logIn = new LogIn();
         readonly Blog blog = new Blog();
         readonly Contact contact = new Contact();
         readonly Executor executor = new Executor();
         readonly FAQS faqs = new FAQS();
         readonly Guide guide = new Guide();
+        readonly GuideLogOut guideLogout = new GuideLogOut();
         readonly Home home = new Home();
         //readonly Send_Result send = new Send_Result();
         readonly public Create_Report report = new Create_Report();
         public bool resultok;
-        public bool final;
         public string result;
 
         [SetUp]
         public void Setup()
         {
+            Environment = TestContext.Parameters["environment"].ToString();
             Username = TestContext.Parameters["user"].ToString();
             PasswordOK = TestContext.Parameters["passwordOK"].ToString();
             driver = new ChromeDriver(TestContext.Parameters["driverPath"].ToString());
@@ -50,7 +54,7 @@ namespace Kwill.Automation.Test
         [Category("Contact")]
         public void Contact_KWill()
         {
-            resultok = contact.ContactwithKwill(driver);
+            resultok = contact.ContactwithKwill(driver,Environment);
             Assert.IsTrue(resultok, "Message is not send correctly");
         }
 
@@ -58,7 +62,7 @@ namespace Kwill.Automation.Test
         [Category("Executor")]
         public void Access_Executor_Page()
         {
-            resultok = executor.AccessExecutorPage(driver);
+            resultok = executor.AccessExecutorPage(driver,Environment);
             Assert.IsTrue(resultok, "Not all information can be displayed");
         }
 
@@ -66,7 +70,7 @@ namespace Kwill.Automation.Test
         [Category("FAQS")]
         public void Access_FAQS_Page()
         {
-            resultok = faqs.AccessFAQSPage(driver);
+            resultok = faqs.AccessFAQSPage(driver, Environment);
             Assert.IsTrue(resultok, "Not all information can be displayed");
         }
 
@@ -74,8 +78,18 @@ namespace Kwill.Automation.Test
         [Category("Guide")]
         public void Access_Guide()
         {
-            result = guide.GetGuide(driver);
-            Assert.AreEqual(result, "https://qwillstaging.blob.core.windows.net/files/kwil-will-writing-guide-v6.pdf", "Pdf is not displayed");
+            logIn.LoginCaseOK(driver,Username,PasswordOK);
+            result = guide.GetGuide(driver, Environment);
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Dashboard/Summary", "Pdf is not displayed");
+        }
+
+
+        [Test]
+        [Category("Guide")]
+        public void Access_Guide_LogOut()
+        {
+            resultok = guideLogout.GetGuide(driver, Environment);
+            Assert.AreEqual(true, resultok, "Request has not been sent");
         }
 
         [Test]
@@ -83,9 +97,8 @@ namespace Kwill.Automation.Test
 
         public void Access_Home_Page()
         {
-            final = true;
             result = home.AccessHomePage(driver);
-            Assert.AreEqual(result, "http://beta.kwil.co.uk/");
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/");
         }
 
         [TearDown]
