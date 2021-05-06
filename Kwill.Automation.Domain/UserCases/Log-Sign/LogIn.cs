@@ -14,7 +14,7 @@ namespace Kwill.Automation.Domain.UserCases
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
-            driver.FindElements(By.Id("marketing-link"))[6].Click();
+            driver.FindElements(By.ClassName("nav-link"))[4].Click();
             driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);
             driver.FindElement(By.Id("Input_Password")).SendKeys(password);
             driver.FindElement(By.ClassName("btn-block")).Click();
@@ -26,9 +26,9 @@ namespace Kwill.Automation.Domain.UserCases
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
             driver.FindElement(By.Id("offer")).Click();
-            driver.FindElements(By.Id("marketing-link"))[6].Click();
+            driver.FindElements(By.ClassName("nav-link"))[4].Click();
             driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);
-            driver.FindElement(By.Id("Input_Password")).SendKeys("Hi");
+            driver.FindElement(By.Id("Input_Password")).SendKeys("HiWord");
             driver.FindElement(By.ClassName("btn-block")).Click();
             Thread.Sleep(2000);
             return driver.Url;

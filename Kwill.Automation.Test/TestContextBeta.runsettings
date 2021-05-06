@@ -8,10 +8,11 @@
 	<!-- Parameters used by tests at runtime -->
 	<TestRunParameters>
 
+		<Parameter name="environment" value="beta." />
 		<Parameter name="webUrl" value="http://beta.kwil.co.uk/" />
 		<Parameter name="DashBoard" value="http://beta.kwil.co.uk/Dashboard/Summary?isEdit=True" />
-		<Parameter name="driverPath" value="C:\Users\josealbertolagos\source\repos\Kwill" />
-		<Parameter name="user" value="tester@test.com" />
+		<Parameter name="driverPath" value="C:\Users\josealbertolagos\source\repos\JoseAlbertoQATester\PunditLeague\" />
+		<Parameter name="user" value="automation@test.com" />
 		<Parameter name="passwordOK" value="123456" />
 		<Parameter name="adminUser" value="admin@kwil.co.uk" />
 		<Parameter name="adminPasswordOK" value="18!chicken" />
@@ -19,7 +20,7 @@
 		<Parameter name="agentPasswordOK" value="123456" />
 		<Parameter name="ambassadorUser" value="Ambassadortest" />
 		<Parameter name="ambassadorPasswordOK" value="123456" />
-		<Parameter name="affiliateUser" value="Affiliate" />
+		<Parameter name="affiliateUser" value="Validte" />
 		<Parameter name="affiliatePasswordOK" value="123456" />
 		<Parameter name="passwordKO" value="11111111" />
 		

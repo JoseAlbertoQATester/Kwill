@@ -22,7 +22,7 @@ namespace Kwill.Automation.Test
 
         public Generator generator = new Generator();
 
-        public Create_Report report = new Create_Report();
+        //public Create_Report report = new Create_Report();
 
         public string webUrlDashboard;
 

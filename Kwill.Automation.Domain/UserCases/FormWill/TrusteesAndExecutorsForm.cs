@@ -8,13 +8,42 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class TrusteesAndExecutorsForm
     {
+        public int SelectEstateAccesStep2(IWebDriver driver, string Environment)
+        {
+
+            if (driver.FindElement(By.ClassName("btn-primary")).Text == "Begin")
+            {
+                driver.FindElement(By.ClassName("btn-primary")).Click();
+            }
+            else
+            {
+                driver.FindElements(By.ClassName("btn-link"))[1].Click();
+            }
+
+
+            if (driver.Url == "http://" + Environment + "kwil.co.uk/Steps/Trustees/SpecifyTrustees")
+            {
+                return 0;
+            }
+            return 1;
+            
+        }
+
         public void NotLegalGuardianNotTrustee(IWebDriver driver)
         {
             driver.FindElements(By.ClassName("btn-link"))[1].Click();
 
-            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
+            while (driver.Url.Contains("Steps/LegalGuardians"))
+            {
+                driver.FindElement(By.Id("submitForm")).Click();
+            }
 
-            driver.FindElement(By.Id("submitForm")).Click();
+            while (driver.Url.Contains("LegalGuardianPets?currentPet"))
+            {
+                driver.FindElement(By.Id("submitForm")).Click();
+            }
+            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
+            driver.FindElements(By.ClassName("btn-primary"))[0].Click();
 
             driver.FindElement(By.Id("add-person")).Click();
             driver.FindElement(By.Id("ExecutorsInfo_Person_FirstName")).SendKeys("Paul");
@@ -27,7 +56,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             driver.FindElement(By.Id("City")).SendKeys("ABERDEEN");
 
             driver.FindElement(By.Id("SaveExecutor")).Click();
-            
+
             driver.FindElement(By.Id("submitForm")).Click();
 
         }

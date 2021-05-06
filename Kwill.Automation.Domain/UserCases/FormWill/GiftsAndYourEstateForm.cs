@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class GiftsAndYourEstateForm
@@ -108,7 +105,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
             driver.FindElements(By.Id("add-person"))[0].Click();
             driver.FindElement(By.Id("PersonsInfo_FirstName")).SendKeys("Tester");
             driver.FindElement(By.Id("PersonsInfo_LastName")).SendKeys("Test");
-            driver.FindElement(By.Id("ddl_relationship")).SendKeys("1");
+            driver.FindElement(By.Id("ddl_relationship")).SendKeys("Son");
             driver.FindElement(By.Id("CurrentAddress")).SendKeys("AB10 1AF");
             driver.FindElement(By.Id("PersonsInfo_Address_Number")).SendKeys("Marischal College");
             driver.FindElement(By.Id("PersonsInfo_Address_Street")).SendKeys("Broad Street");

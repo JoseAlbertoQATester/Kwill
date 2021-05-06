@@ -14,8 +14,7 @@ namespace Kwill.Automation.Test
     {
         public LogIn login = new LogIn();
         public LogOut logout = new LogOut();
-        public Register register = new Register();
-        public Create_Report report = new Create_Report();
+        //public Create_Report report = new Create_Report();
 
         public string Environment { get; private set; }
 

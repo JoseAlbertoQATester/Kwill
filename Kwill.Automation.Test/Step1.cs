@@ -13,10 +13,9 @@ namespace Kwill.Automation.Test
         public LogIn login = new LogIn();
         public LogOut logout = new LogOut();
         public PersonalDetailForm personalDetail = new PersonalDetailForm();
-        public Create_Report report = new Create_Report();
+        //public Create_Report report = new Create_Report();
 
         public string Environment { get; private set; }
-
         public string webUrlDashboard;
         public string Username { get; private set; }
         public string PasswordOK { get; private set; }
@@ -45,12 +44,12 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Married");
-            personalDetail.step1Partner(driver);
-            personalDetail.step1ChildrenExist(driver, 0);
-            personalDetail.step1AddChildren(driver);
-            personalDetail.step1PetExist(driver, 0);
-            personalDetail.step1AddPet(driver);
+            personalDetail.Step1Customer(driver, "Married");
+            personalDetail.Step1Partner(driver);
+            personalDetail.Step1ChildrenExist(driver, 0);
+            personalDetail.Step1AddChildren(driver);
+            personalDetail.Step1PetExist(driver, 0);
+            personalDetail.Step1AddPet(driver);
         }
 
 
@@ -61,9 +60,9 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Single");
-            personalDetail.step1ChildrenExist(driver, 1);
-            personalDetail.step1PetExist(driver, 1);
+            personalDetail.Step1Customer(driver, "Single");
+            personalDetail.Step1ChildrenExist(driver, 1);
+            personalDetail.Step1PetExist(driver, 1);
         }
 
 
@@ -73,10 +72,10 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Single");
-            personalDetail.step1ChildrenExist(driver, 1);
-            personalDetail.step1PetExist(driver, 0);
-            personalDetail.step1AddPet(driver);
+            personalDetail.Step1Customer(driver, "Single");
+            personalDetail.Step1ChildrenExist(driver, 1);
+            personalDetail.Step1PetExist(driver, 0);
+            personalDetail.Step1AddPet(driver);
         }
 
 
@@ -86,10 +85,10 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Single");
-            personalDetail.step1ChildrenExist(driver, 0);
-            personalDetail.step1AddChildren(driver);
-            personalDetail.step1PetExist(driver, 1);
+            personalDetail.Step1Customer(driver, "Single");
+            personalDetail.Step1ChildrenExist(driver, 0);
+            personalDetail.Step1AddChildren(driver);
+            personalDetail.Step1PetExist(driver, 1);
         }
 
        // [Test]
@@ -98,12 +97,12 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Single");
+            personalDetail.Step1Customer(driver, "Single");
             counter = 0;
-            personalDetail.step1ChildrenExist(driver, 0);
+            personalDetail.Step1ChildrenExist(driver, 0);
             while (true)
             {
-                personalDetail.step1AddChildren(driver);
+                personalDetail.Step1AddChildren(driver);
                 counter++;
                 Assert.AreEqual(driver.Url, "");
 
@@ -116,14 +115,14 @@ namespace Kwill.Automation.Test
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             personalDetail.SelectEstateAccesStep1(driver);
-            personalDetail.step1Customer(driver, "Single");
+            personalDetail.Step1Customer(driver, "Single");
             counter = 0;
-            personalDetail.step1ChildrenExist(driver, 0);
-            personalDetail.step1AddChildren(driver);
-            personalDetail.step1PetExist(driver, 0);
+            personalDetail.Step1ChildrenExist(driver, 0);
+            personalDetail.Step1AddChildren(driver);
+            personalDetail.Step1PetExist(driver, 0);
             while (true)
             {
-                personalDetail.step1AddPet(driver);
+                personalDetail.Step1AddPet(driver);
                 counter++;
                 Assert.AreEqual(driver.Url, "");
             }

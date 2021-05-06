@@ -26,7 +26,7 @@ namespace Kwill.Automation.Test
         readonly GuideLogOut guideLogout = new GuideLogOut();
         readonly Home home = new Home();
         //readonly Send_Result send = new Send_Result();
-        readonly public Create_Report report = new Create_Report();
+        //readonly //public Create_Report report = new Create_Report();
         public bool resultok;
         public string result;
 
@@ -46,7 +46,7 @@ namespace Kwill.Automation.Test
         [Category("Blog")]
         public void Access_Article_In_Blog_Page()
         {
-            resultok = blog.AccessArticlePage(driver);
+            resultok = blog.AccessArticlePage(driver,Environment);
             Assert.IsTrue(resultok, "It is displayed a diferent article");
         }
 
@@ -80,7 +80,7 @@ namespace Kwill.Automation.Test
         {
             logIn.LoginCaseOK(driver,Username,PasswordOK);
             result = guide.GetGuide(driver, Environment);
-            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/Dashboard/Summary", "Pdf is not displayed");
+            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/guide", "Pdf is not displayed");
         }
 
 
@@ -106,28 +106,19 @@ namespace Kwill.Automation.Test
         {
             try
             {
-                //if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
-                //{
-                //    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
-                //    report.CreateRepor(
-                //    TestContext.CurrentContext.Test.Name,
-                //    TestContext.CurrentContext.Result.Message,
-                //    TestContext.CurrentContext.Test.Name.ToString() + ".png",
-                //    final);
-                //}
-                //if (final)
-                //{
-                //    send.SendEmail();
-                //    File.Delete(@"C:\Users\josealbertolagos\source\repos\Kwill\Kwill.Automation.Test\bin\Debug\netcoreapp3.1\ReportKwill.pdf");
-                //}
+                if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
+                {
+                    driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
+
+                }
+                
 
                 driver.Close();
             }
             catch (Exception)
             {
                 driver.Quit();
-                //send.SendEmail();
-                //File.Delete(@"C:\Users\josealbertolagos\source\repos\Kwill\Kwill.Automation.Test\bin\Debug\netcoreapp3.1\ReportKwill.pdf");
+              
             }
 
         }

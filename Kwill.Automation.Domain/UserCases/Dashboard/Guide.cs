@@ -21,7 +21,8 @@ namespace Kwill.Automation.Domain.UserCases.Dashboard
             driver.FindElements(By.Id("marketing-link"))[5].Click();
             Assert.AreEqual(driver.Url, "http://" + Environment + "kwil.co.uk/guide", "Page displayed is not correct");
 
-            driver.FindElement(By.ClassName("btn-primary")).Click();
+            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
+            Thread.Sleep(500);
             return driver.Url;
 
         }

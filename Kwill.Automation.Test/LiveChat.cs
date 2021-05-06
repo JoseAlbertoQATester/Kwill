@@ -15,9 +15,8 @@ namespace Kwill.Automation.Test
     {
         public LogIn login = new LogIn();
         public LogOut logout = new LogOut();
-        public Register register = new Register();
         public Livechat livechat = new Livechat();
-        public Create_Report report = new Create_Report();
+        //public Create_Report report = new Create_Report();
 
         public string Environment { get; private set; }
 
@@ -68,11 +67,11 @@ namespace Kwill.Automation.Test
                 if (TestContext.CurrentContext.Result.Outcome.Status != TestStatus.Passed)
                 {
                     driver.TakeScreenshot().SaveAsFile(TestContext.CurrentContext.Test.Name.ToString() + ".png", ScreenshotImageFormat.Png);
-                    report.CreateRepor(
-                    TestContext.CurrentContext.Test.Name,
-                    TestContext.CurrentContext.Result.Message,
-                    TestContext.CurrentContext.Test.Name.ToString() + ".png"
-                    );
+                    //report.CreateRepor(
+                    //TestContext.CurrentContext.Test.Name,
+                    //TestContext.CurrentContext.Result.Message,
+                    //TestContext.CurrentContext.Test.Name.ToString() + ".png"
+                    //);
                 }
 
                 driver.Close();

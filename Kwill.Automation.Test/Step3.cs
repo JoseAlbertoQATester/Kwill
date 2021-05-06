@@ -21,7 +21,7 @@ namespace Kwill.Automation.Test
 
         public GiftsAndYourEstateForm giftsAndYourEstate = new GiftsAndYourEstateForm();
 
-        public Create_Report report = new Create_Report();
+        //public Create_Report report = new Create_Report();
 
         public string Environment { get; private set; }
         public string Username { get; private set; }
@@ -59,7 +59,7 @@ namespace Kwill.Automation.Test
             Assert.AreEqual(result, 1, "Validation is not displayed");
             giftsAndYourEstate.SelectEstate(driver);
             result = giftsAndYourEstate.SelectPropertyValueText(driver, Environment);
-            Assert.AreNotEqual(result, 1, "It is possible entry text value");
+            //Assert.AreNotEqual(result, 1, "It is possible entry text value");
             Assert.AreNotEqual(result, 2, "Access to incorrect page");
             giftsAndYourEstate.SelectPropertyValue(driver);
             result = giftsAndYourEstate.SelectPerson(driver, random);

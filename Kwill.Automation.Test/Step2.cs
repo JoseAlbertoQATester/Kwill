@@ -18,9 +18,8 @@ namespace Kwill.Automation.Test
 
         public LogOut logout = new LogOut();
 
-        public Register register = new Register();
 
-        //public Create_Report report = new Create_Report();
+        ////public Create_Report report = new Create_Report();
 
         public TrusteesAndExecutorsForm trusteesAndExecutors = new TrusteesAndExecutorsForm();
 
@@ -53,7 +52,7 @@ namespace Kwill.Automation.Test
         [Test]
         [Category("Step2")]
 
-        public void Step1EndNotLegalGuardianAndNotTrustees()
+        public void Step2EndNotLegalGuardianAndNotTrustees()
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             trusteesAndExecutors.NotLegalGuardianNotTrustee(driver);
@@ -62,7 +61,7 @@ namespace Kwill.Automation.Test
         [Test]
         [Category("Step2")]
 
-        public void Step1EndWithLegalGuardianAndTrustees ()
+        public void Step2EndWithLegalGuardianAndTrustees ()
         {
             login.LoginCaseOK(driver, Username, PasswordOK);
             trusteesAndExecutors.LegalGuardianAndTrustee(driver);

@@ -20,8 +20,10 @@ namespace Kwill.Automation.Domain.UserCases.Dashboard
                 Thread.Sleep(500);
                 driver.FindElements(By.ClassName("fa-plus"))[i].Click();
             }
+            
 
-            return driver.FindElements(By.ClassName("fa-plus")).Count.Equals(driver.FindElements(By.ClassName("panel-body")).Count);
+            return driver.FindElements(By.ClassName("fa-plus")).Count.Equals(driver.FindElements(By.ClassName("panel-body")).Count)&&
+                   driver.FindElements(By.ClassName("fa-plus")).Count.Equals(10);
         }
     }
 }

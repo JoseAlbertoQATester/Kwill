@@ -24,7 +24,7 @@ namespace Kwill.Automation.Test
         public AddAffiliate addAffiliate = new AddAffiliate();
         public ViewAffiliates viewAffiliates = new ViewAffiliates();
 
-        //public Create_Report report = new Create_Report();
+        ////public Create_Report report = new Create_Report();
 
 
         public string AdminUser { get; private set; }
