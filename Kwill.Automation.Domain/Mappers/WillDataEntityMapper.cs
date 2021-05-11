@@ -42,17 +42,17 @@ namespace Kwill.Automation.Domain.Mappers
 
             return new ChildrenEntity
             {
-                FirstName = input.FirstName = "",
-                LastName = input.LastName = "",
-                Relation = input.Relation = "",
-                Day = input.Day = 1,
-                Month = input.Month = 1,
-                Year = input.Year = 2020,
-                Number = input.Number = 10,
-                PostCode = input.PostCode = "",
-                Street = input.Street = "",
-                Town = input.Town = "",
-                City = input.City = "",
+                FirstName = input.FirstName ,
+                LastName = input.LastName ,
+                Relation = input.Relation ,
+                Day = input.Day ,
+                Month = input.Month ,
+                Year = input.Year ,
+                Number = input.Number ,
+                PostCode = input.PostCode ,
+                Street = input.Street ,
+                Town = input.Town ,
+                City = input.City ,
             };
         }
 
@@ -65,19 +65,19 @@ namespace Kwill.Automation.Domain.Mappers
 
             return new CustomerEntity
             {
-                FirstName = input.FirstName = "",
-                LastName = input.LastName = "",
-                MiddleName = input.MiddleName = "",
-                Day = input.Day = 1,
-                Month = input.Month = 1,
-                Year = input.Year = 2020,
-                MaritalStatus = input.MaritalStatus = "",
-                PostCode = input.PostCode = "",
-                Address1 = input.Address1 = "",
-                Address2 = input.Address2 = "",
-                Town = input.Town = "",
-                City = input.City = "",
-                Telephone = input.Telephone = 666666666,
+                FirstName = input.FirstName ,
+                LastName = input.LastName ,
+                MiddleName = input.MiddleName ,
+                Day = input.Day ,
+                Month = input.Month ,
+                Year = input.Year ,
+                MaritalStatus = input.MaritalStatus ,
+                PostCode = input.PostCode ,
+                Address1 = input.Address1 ,
+                Address2 = input.Address2 ,
+                Town = input.Town ,
+                City = input.City ,
+                Telephone = input.Telephone ,
             };
         }
 
@@ -90,16 +90,16 @@ namespace Kwill.Automation.Domain.Mappers
 
             return new PartnerEntity
             {
-                FirstName = input.FirstName = "",
-                LastName = input.LastName = "",
-                Day = input.Day = 1,
-                Month = input.Month = 1,
-                Year = input.Year = 2020,
-                PostCode = input.PostCode = "",
-                Address1 = input.Address1 = "",
-                Address2 = input.Address2 = "",
-                Town = input.Town = "",
-                City = input.City = "",
+                FirstName = input.FirstName ,
+                LastName = input.LastName ,
+                Day = input.Day ,
+                Month = input.Month ,
+                Year = input.Year ,
+                PostCode = input.PostCode ,
+                Address1 = input.Address1 ,
+                Address2 = input.Address2 ,
+                Town = input.Town ,
+                City = input.City ,
             };
         }
 
@@ -113,17 +113,30 @@ namespace Kwill.Automation.Domain.Mappers
 
             return new PersonEntity
             {
-                FirstName = input.FirstName = "",
-                LastName = input.LastName = "",
-                Relation = input.Relation = "",
-                Day = input.Day = 1,
-                Month = input.Month = 1,
-                Year = input.Year = 2020,
-                PostCode = input.PostCode = "",
-                Address1 = input.Address1 = "",
-                Address2 = input.Address2 = "",
-                Town = input.Town = "",
-                City = input.City = "",
+                FirstName = input.FirstName ,
+                LastName = input.LastName ,
+                Relation = input.Relation ,
+                Day = input.Day ,
+                Month = input.Month ,
+                Year = input.Year ,
+                PostCode = input.PostCode ,
+                Address1 = input.Address1 ,
+                Address2 = input.Address2 ,
+                Town = input.Town ,
+                City = input.City ,
+            };
+        }
+        public UserEntity MapFrom(UserData input)
+        {
+            if (input == null)
+            {
+                throw new System.ArgumentNullException(nameof(input));
+            }
+
+            return new UserEntity
+            {
+                Email = input.Email,
+                Password = input.Password,
             };
         }
 

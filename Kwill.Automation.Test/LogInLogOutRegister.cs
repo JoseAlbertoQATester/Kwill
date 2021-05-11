@@ -58,64 +58,64 @@ namespace Kwill.Automation.Test
             driver.Url = LogIn;
         }
 
-        [Test]
-        [Category("LogIn")]
+        //[Test]
+        //[Category("LogIn")]
 
-        public void Customer_LogIn_Test_OK()
-        {
-            result = login.LoginCaseOK(driver, Username, PasswordOK);
-            Assert.AreEqual(webUrlDashboard, result);
-        }
+        //public void Customer_LogIn_Test_OK()
+        //{
+        //    result = login.LoginCaseOK(driver, Username, PasswordOK);
+        //    Assert.AreEqual(webUrlDashboard, result);
+        //}
 
-        [Test]
-        [Category("LogIn")]
-        public void Admin_LogIn_Test_OK()
-        {
-            result = login.LoginCaseOK(driver, adminUser, adminPasswordOK);
-            Assert.IsTrue( result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
-        }
+        //[Test]
+        //[Category("LogIn")]
+        //public void Admin_LogIn_Test_OK()
+        //{
+        //    result = login.LoginCaseOK(driver, adminUser, adminPasswordOK);
+        //    Assert.IsTrue( result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
+        //}
 
-        [Test]
-        [Category("LogIn")]
-        public void Ambassador_LogIn_Test_OK()
-        {
-            result = login.LoginCaseOK(driver, ambassadorUser, ambassadorPasswordOK);
-            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Ambassador/"));
-        }
+        //[Test]
+        //[Category("LogIn")]
+        //public void Ambassador_LogIn_Test_OK()
+        //{
+        //    result = login.LoginCaseOK(driver, ambassadorUser, ambassadorPasswordOK);
+        //    Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Ambassador/"));
+        //}
 
-        [Test]
-        [Category("LogIn")]
-        public void Affiliate_LogIn_Test_OK()
-        {
-            result = login.LoginCaseOK(driver, affiliateUser, affiliatePasswordOK);
-            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/AffiliateAdmin/Dashboard"));
-        }
+        //[Test]
+        //[Category("LogIn")]
+        //public void Affiliate_LogIn_Test_OK()
+        //{
+        //    result = login.LoginCaseOK(driver, affiliateUser, affiliatePasswordOK);
+        //    Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/AffiliateAdmin/Dashboard"));
+        //}
 
-        [Test]
-        [Category("LogIn")]
-        public void Agent_LogIn_Test_OK()
-        {
-            result = login.LoginCaseOK(driver, agentUser, agentPasswordOK);
-            Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
-        }
+        //[Test]
+        //[Category("LogIn")]
+        //public void Agent_LogIn_Test_OK()
+        //{
+        //    result = login.LoginCaseOK(driver, agentUser, agentPasswordOK);
+        //    Assert.IsTrue(result.Contains("http://" + Environment + "kwil.co.uk/Admin/Dashboard"));
+        //}
 
-        [Test]
-        [Category("LogIn")]
+        //[Test]
+        //[Category("LogIn")]
 
-        public void LogInTestKO()
-        {
-            result = login.LoginCaseKO(driver, Username);
-            Assert.AreNotEqual(webUrlDashboard, result);
-        }
-        [Test]
-        [Category("LogOut")]
+        //public void LogInTestKO()
+        //{
+        //    result = login.LoginCaseKO(driver, Username);
+        //    Assert.AreNotEqual(webUrlDashboard, result);
+        //}
+        //[Test]
+        //[Category("LogOut")]
 
-        public void LogOutTest()
-        {
-            login.LoginCaseOK(driver, Username, PasswordOK);
-            result = logout.LogOutOk(driver);
-            Assert.AreEqual(LogIn, result);
-        }
+        //public void LogOutTest()
+        //{
+        //    login.LoginCaseOK(driver, Username, PasswordOK);
+        //    result = logout.LogOutOk(driver);
+        //    Assert.AreEqual(LogIn, result);
+        //}
 
         [TearDown]
         public void Close()

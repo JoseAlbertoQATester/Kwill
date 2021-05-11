@@ -5,7 +5,6 @@ namespace Kwill.Automation.Domain.Pages
 {
     class PetsPage
     {
-
         public void AddPet(IWebDriver driver)
         {
             driver.FindElement(By.Id("add-person")).Click();
@@ -28,7 +27,7 @@ namespace Kwill.Automation.Domain.Pages
         }
         public void ClickOnSavePet(IWebDriver driver)
         {
-            driver.FindElements(By.ClassName("btn-primary"))[0].Click();
+            driver.FindElements(By.ClassName("btn-primary"))[driver.FindElements(By.ClassName("btn-primary")).Count - 3].Click();
         }
         public void ClickOnCancelSavePet(IWebDriver driver)
         {

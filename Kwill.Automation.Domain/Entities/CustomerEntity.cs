@@ -8,11 +8,11 @@
 
         public string LastName { get; set; }
 
-        public int Day { get; set; }
+        public string Day { get; set; }
 
-        public int Month { get; set; }
+        public string Month { get; set; }
 
-        public int Year { get; set; }
+        public string Year { get; set; }
 
         public string MaritalStatus { get; set; }
 
@@ -26,6 +26,6 @@
 
         public string City { get; set; }
 
-        public int Telephone { get; set; }
+        public string Telephone { get; set; }
     }
 }

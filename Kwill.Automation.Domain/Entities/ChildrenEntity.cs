@@ -1,4 +1,4 @@
-﻿namespace Kwill.Automation.Data.Entities
+﻿namespace Kwill.Automation.Domain.Entities
 {
     public class ChildrenEntity
     {
@@ -9,13 +9,13 @@
 
         public string Relation { get; set; }
 
-        public int Day { get; set; }
+        public string Day { get; set; }
 
-        public int Month { get; set; }
+        public string Month { get; set; }
 
-        public int Year { get; set; }
+        public string Year { get; set; }
 
-        public int Number { get; set; }
+        public string Number { get; set; }
 
         public string PostCode { get; set; }
 

@@ -56,25 +56,25 @@ namespace Kwill.Automation.Test
         }
 
 
-        [Test]
-        [Category("Step1")]
-        public void Step4EndToEndOK()
-        {
-            login.LoginCaseOK(driver, Username, PasswordOK);
-            funeralWishes.SelectEstateAccesStep4(driver);
-            value = funeralWishes.SelectFuneralDetail(driver,select, Environment);
-            Assert.AreNotEqual(value, 1, "Step Should be complet");
-            Assert.AreNotEqual(value, 2, "Acces incorrect page");
-            Assert.AreEqual(value, 0);
-            funeralWishes.SelectEstateAccesStep4(driver);
-            value =funeralWishes.ViewFuneralDetail(driver,select, Environment);
-            Assert.AreNotEqual(value, 4, "Acces incorrect page");
-            Assert.AreNotEqual(value,3,"Step Should be complet");
-            Console.WriteLine("The email is not Sended"); Assert.AreNotEqual(value,2,"Begin button should not be displayed");
-            Assert.AreNotEqual(value,1,"Funeral detail selected is not correct");
-            Assert.AreEqual(value, 0);
+        //[Test]
+        //[Category("Step1")]
+        //public void Step4EndToEndOK()
+        //{
+        //    login.LoginCaseOK(driver, Username, PasswordOK);
+        //    funeralWishes.SelectEstateAccesStep4(driver);
+        //    value = funeralWishes.SelectFuneralDetail(driver,select, Environment);
+        //    Assert.AreNotEqual(value, 1, "Step Should be complet");
+        //    Assert.AreNotEqual(value, 2, "Acces incorrect page");
+        //    Assert.AreEqual(value, 0);
+        //    funeralWishes.SelectEstateAccesStep4(driver);
+        //    value =funeralWishes.ViewFuneralDetail(driver,select, Environment);
+        //    Assert.AreNotEqual(value, 4, "Acces incorrect page");
+        //    Assert.AreNotEqual(value,3,"Step Should be complet");
+        //    Console.WriteLine("The email is not Sended"); Assert.AreNotEqual(value,2,"Begin button should not be displayed");
+        //    Assert.AreNotEqual(value,1,"Funeral detail selected is not correct");
+        //    Assert.AreEqual(value, 0);
 
-        }
+        //}
 
         [TearDown]
         public void Close()

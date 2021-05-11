@@ -1,7 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Net.Http.Headers;
 using System.Threading;
 
 namespace Kwill.Automation.Domain.UserCases.FormWill

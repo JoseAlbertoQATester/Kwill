@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Kwill.Automation.Domain.Entities
+﻿namespace Kwill.Automation.Domain.Entities
 {
     public class PetEntity
     {

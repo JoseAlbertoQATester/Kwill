@@ -32,7 +32,7 @@ namespace Kwill.Automation.Domain.Pages
         {
             driver.FindElement(By.LinkText("Your LPA")).Click();
         }
-        public void ClickOnEditPêopleButton(IWebDriver driver)
+        public void ClickOnEditPeopleButton(IWebDriver driver)
         {
             driver.FindElement(By.LinkText("Edit people")).Click();
         }

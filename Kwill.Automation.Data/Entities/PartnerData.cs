@@ -11,13 +11,13 @@ namespace Kwill.Automation.Data.Entities
         public string LastName { get; set; }
 
         [JsonProperty("Day")]
-        public int Day { get; set; }
+        public string Day { get; set; }
 
         [JsonProperty("Month")]
-        public int Month { get; set; }
+        public string Month { get; set; }
 
         [JsonProperty("Year")]
-        public int Year { get; set; }
+        public string Year { get; set; }
 
         [JsonProperty("PostCode")]
         public string PostCode { get; set; }

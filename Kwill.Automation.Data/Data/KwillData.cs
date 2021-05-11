@@ -12,7 +12,7 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Correct")
             {
                 _will.Date = "InviteEdit Leave";
             }
@@ -27,10 +27,15 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Correct")
             {
                 _pet.Name = "Maya";
                 _pet.Type = "Dog";
+            }
+            else 
+            {
+                _pet.Name = "";
+                _pet.Type = "";
             }
 
             return _pet;
@@ -43,14 +48,28 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Correct")
             {
-                _children.FirstName = "Maya";
-                _children.LastName = "Dog";
-                _children.Day = 1;
-                _children.Month = 1;
-                _children.Year = 2020;
-                _children.Number = 10;
+                _children.FirstName = "Hugo";
+                _children.LastName = "Lagos";
+                _children.Day = "1";
+                _children.Month = "January";
+                _children.Year = "2020";
+                _children.Number = "731a";
+                _children.City = "LONDON";
+                _children.Town = "";
+                _children.PostCode = "E10 5AB";
+                _children.Street = "High Road Leyton";
+                _children.Relation = "Son";
+            }
+            else 
+            {
+                _children.FirstName = "";
+                _children.LastName = "";
+                _children.Day = "";
+                _children.Month = "";
+                _children.Year = "";
+                _children.Number = "";
                 _children.City = "";
                 _children.Town = "";
                 _children.PostCode = "";
@@ -68,19 +87,19 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Correct")
             {
-                _person.FirstName = "Maya";
-                _person.LastName = "Dog";
-                _person.Relation = "Dog";
-                _person.Day = 1;
-                _person.Month = 1;
-                _person.Year = 2020;
-                _person.City = "";
+                _person.FirstName = "Jonh";
+                _person.LastName = "Lagos";
+                _person.Relation = "Family Menber";
+                _person.Day = "1";
+                _person.Month = "January";
+                _person.Year = "1990";
+                _person.City = "LONDON";
                 _person.Town = "";
-                _person.PostCode = "";
-                _person.Address1 = "";
-                _person.Address2 = "";
+                _person.PostCode = "E10 5AB";
+                _person.Address1 = "731a";
+                _person.Address2 = "High Road Leyton";
             }
 
             return _person;
@@ -93,13 +112,40 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Correct")
             {
-                _partner.FirstName = "Maya";
-                _partner.LastName = "Dog";
-                _partner.Day = 1;
-                _partner.Month = 1;
-                _partner.Year = 2020;
+                _partner.FirstName = "Anna";
+                _partner.LastName = "Vargas";
+                _partner.Day = "25";
+                _partner.Month = "Sep";
+                _partner.Year = "1995";
+                _partner.City = "LONDON";
+                _partner.Town = "";
+                _partner.PostCode = "E10 5AB";
+                _partner.Address1 = "731a";
+                _partner.Address2 = "High Road Leyton";
+            }
+            else if (name == "Younght")
+            {
+                _partner.FirstName = "Anna";
+                _partner.LastName = "Vargas";
+                _partner.Day = "25";
+                _partner.Month = "Sep";
+                _partner.Year = "1995";
+                _partner.City = "LONDON";
+                _partner.Town = "";
+                _partner.PostCode = "E10 5AB";
+                _partner.Address1 = "731a";
+                _partner.Address2 = "High Road Leyton";
+            }
+
+            else
+            {
+                _partner.FirstName = "";
+                _partner.LastName = "";
+                _partner.Day = "";
+                _partner.Month = "";
+                _partner.Year = "";
                 _partner.City = "";
                 _partner.Town = "";
                 _partner.PostCode = "";
@@ -117,24 +163,100 @@ namespace Kwill.Automation.Data.Data
             {
                 throw new ArgumentNullException(nameof(name));
             }
-            else if (name == "payPool")
+            else if (name == "Married")
             {
-                _customer.FirstName = "Maya";
-                _customer.LastName = "Dog";
-                _customer.MiddleName = "Dog";
-                _customer.Day = 1;
-                _customer.Month = 1;
-                _customer.Year = 2020;
+                _customer.FirstName = "Jose";
+                _customer.LastName = "Lagos";
+                _customer.MiddleName = "Alberto";
+                _customer.Day = "5";
+                _customer.Month = "Aug";
+                _customer.Year = "1995";
+                _customer.MaritalStatus = "Married";
+                _customer.City = "LONDON";
+                _customer.Town = "";
+                _customer.PostCode = "E10 5AB";
+                _customer.Address1 = "731a";
+                _customer.Address2 = "High Road Leyton";
+                _customer.Telephone = "07700000000";
+            }
+            else if (name == "Single")
+            {
+                _customer.FirstName = "Jose";
+                _customer.LastName = "Lagos";
+                _customer.MiddleName = "Alberto";
+                _customer.Day = "5";
+                _customer.Month = "Aug";
+                _customer.Year = "1995";
+                _customer.MaritalStatus = "Single";
+                _customer.City = "LONDON";
+                _customer.Town = "";
+                _customer.PostCode = "E10 5AB";
+                _customer.Address1 = "731a";
+                _customer.Address2 = "High Road Leyton";
+                _customer.Telephone = "07700000000";
+            }
+            else if (name == "Younght")
+            {
+                _customer.FirstName = "Jose";
+                _customer.LastName = "Lagos";
+                _customer.MiddleName = "Alberto";
+                _customer.Day = "5";
+                _customer.Month = "Aug";
+                _customer.Year = "2010";
+                _customer.MaritalStatus = "Married";
+                _customer.City = "LONDON";
+                _customer.Town = "";
+                _customer.PostCode = "E10 5AB";
+                _customer.Address1 = "731a";
+                _customer.Address2 = "High Road Leyton";
+                _customer.Telephone = "07700000000";
+            }
+
+
+            else 
+            {
+                _customer.FirstName = "";
+                _customer.LastName = "";
+                _customer.MiddleName = "";
+                _customer.Day = "";
+                _customer.Month = "";
+                _customer.Year = "";
                 _customer.MaritalStatus = "";
                 _customer.City = "";
                 _customer.Town = "";
                 _customer.PostCode = "";
                 _customer.Address1 = "";
                 _customer.Address2 = "";
-                _customer.Telephone = 666666666;
+                _customer.Telephone = "";
             }
 
             return _customer;
+        }
+
+        public UserData GetUserData(string name)
+        {
+            UserData _user = new UserData();
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+            else if (name == "Correct")
+            {
+                _user.Email = "test@test.com";
+                _user.Password = "123456";
+            }
+            else if (name == "admin")
+            {
+                _user.Email = "admin@kwil.co.uk";
+                _user.Password = "18!chicken";
+            }
+            else
+            {
+                _user.Email = "";
+                _user.Password = "";
+            }
+
+            return _user;
         }
 
     }

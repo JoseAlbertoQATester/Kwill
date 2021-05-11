@@ -9,11 +9,11 @@ namespace Kwill.Automation.Domain.Pages
     {
         public void ClickOnYes(IWebDriver driver)
         {
-            driver.FindElements(By.ClassName("btn-primary"))[0].Click();
+            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
         }
         public void ClickOnNo(IWebDriver driver)
         {
-            driver.FindElements(By.ClassName("btn-primary"))[1].Click();
+            driver.FindElements(By.ClassName("btn-primary"))[2].Click();
         }
         public void ClickOnGoBack(IWebDriver driver)
         {

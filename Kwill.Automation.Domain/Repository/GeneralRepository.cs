@@ -5,7 +5,7 @@ using Kwill.Automation.Data.Entities;
 
 namespace Kwill.Automation.Domain.Repository
 {
-    public class Repository
+    public class GeneralRepository
     {
         public KwillData data = new KwillData();
 
@@ -19,7 +19,7 @@ namespace Kwill.Automation.Domain.Repository
 
         public CustomerData customerdata = new CustomerData();
 
-
+        public UserData userData = new UserData();
 
         public WillDataEntityMapper kWillMapper = new WillDataEntityMapper();
 
@@ -83,6 +83,16 @@ namespace Kwill.Automation.Domain.Repository
             }
 
             return kWillMapper.MapFrom(data.GetCustomerData(name));
+        }
+
+        public UserEntity GetUser(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new System.ArgumentNullException(nameof(name));
+            }
+
+            return kWillMapper.MapFrom(data.GetUserData(name));
         }
 
     }

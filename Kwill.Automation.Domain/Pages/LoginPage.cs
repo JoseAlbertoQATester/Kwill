@@ -2,7 +2,7 @@
 
 namespace Kwill.Automation.Domain.Pages
 {
-    class LoginPage
+    public class LoginPage
     {
         public void AccessToLoginPage(IWebDriver driver)
         {

@@ -47,15 +47,15 @@ namespace Kwill.Automation.Test
         }
 
        //[Test]
-        [Category("LiveChat")]
-        public void Review_UseLiveChat()
-        {
-            login.LoginCaseOK(driver, Username, PasswordOK);
-            bool result = livechat.OpenLiveChat(driver);
-            Assert.IsTrue(result,"LiveChat is not open");
-            string text = livechat.WriterLiveChat(driver);
-            Assert.AreEqual("Hellow!", text, "the text sent is not the same as the text displayed");
-        }
+        //[Category("LiveChat")]
+        //public void Review_UseLiveChat()
+        //{
+        //    login.LoginCaseOK(driver, Username, PasswordOK);
+        //    bool result = livechat.OpenLiveChat(driver);
+        //    Assert.IsTrue(result,"LiveChat is not open");
+        //    string text = livechat.WriterLiveChat(driver);
+        //    Assert.AreEqual("Hellow!", text, "the text sent is not the same as the text displayed");
+        //}
 
 
 

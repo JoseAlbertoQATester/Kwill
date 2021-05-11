@@ -1,7 +1,5 @@
-﻿using Kwill.Automation.Data.Entities;
-using Kwill.Automation.Domain.Entities;
+﻿using Kwill.Automation.Domain.Entities;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using PunditLeagueAutomation.Domain.Repository;
 
 
@@ -13,7 +11,7 @@ namespace Kwill.Automation.Domain.UserCases.FormWill
         readonly CustomerEntity customer = new CustomerEntity();
         readonly ChildrenEntity children = new ChildrenEntity();
         readonly PetEntity pet = new PetEntity();
-        private cus
+
         string name;
         int element;
 

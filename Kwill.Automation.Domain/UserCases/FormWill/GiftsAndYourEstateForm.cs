@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
+
 namespace Kwill.Automation.Domain.UserCases.FormWill
 {
     public class GiftsAndYourEstateForm

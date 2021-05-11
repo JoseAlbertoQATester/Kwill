@@ -74,14 +74,14 @@ namespace Kwill.Automation.Test
             Assert.IsTrue(resultok, "Not all information can be displayed");
         }
 
-        [Test]
-        [Category("Guide")]
-        public void Access_Guide()
-        {
-            logIn.LoginCaseOK(driver,Username,PasswordOK);
-            result = guide.GetGuide(driver, Environment);
-            Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/guide", "Pdf is not displayed");
-        }
+        //[Test]
+        //[Category("Guide")]
+        //public void Access_Guide()
+        //{
+        //    logIn.LoginCaseOK(driver,Username,PasswordOK);
+        //    result = guide.GetGuide(driver, Environment);
+        //    Assert.AreEqual(result, "http://" + Environment + "kwil.co.uk/guide", "Pdf is not displayed");
+        //}
 
 
         [Test]

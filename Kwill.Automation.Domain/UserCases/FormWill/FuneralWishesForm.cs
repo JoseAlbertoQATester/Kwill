@@ -1,8 +1,5 @@
-﻿using Kwill.Automation.Data.Entities;
-using Kwill.Automation.Domain.Entities;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using PunditLeagueAutomation.Domain.Repository;
+﻿using OpenQA.Selenium;
+
 
 namespace Kwill.Automation.Domain.UserCases.FormWill
 {

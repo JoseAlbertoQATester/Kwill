@@ -49,23 +49,23 @@ namespace Kwill.Automation.Test
         }
 
 
-        [Test]
-        [Category("Step2")]
+        //[Test]
+        //[Category("Step2")]
 
-        public void Step2EndNotLegalGuardianAndNotTrustees()
-        {
-            login.LoginCaseOK(driver, Username, PasswordOK);
-            trusteesAndExecutors.NotLegalGuardianNotTrustee(driver);
-        }
+        //public void Step2EndNotLegalGuardianAndNotTrustees()
+        //{
+        //    login.LoginCaseOK(driver, Username, PasswordOK);
+        //    trusteesAndExecutors.NotLegalGuardianNotTrustee(driver);
+        //}
 
-        [Test]
-        [Category("Step2")]
+        //[Test]
+        //[Category("Step2")]
 
-        public void Step2EndWithLegalGuardianAndTrustees ()
-        {
-            login.LoginCaseOK(driver, Username, PasswordOK);
-            trusteesAndExecutors.LegalGuardianAndTrustee(driver);
-        }
+        //public void Step2EndWithLegalGuardianAndTrustees ()
+        //{
+        //    login.LoginCaseOK(driver, Username, PasswordOK);
+        //    trusteesAndExecutors.LegalGuardianAndTrustee(driver);
+        //}
 
         [TearDown]
         public void Close()

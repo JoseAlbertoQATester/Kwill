@@ -1,36 +1,60 @@
 ﻿using OpenQA.Selenium;
+using Kwill.Automation.Domain.Pages;
 using Kwill.Automation.Domain.Entities;
 using Kwill.Automation.Domain.Repository;
-using System.Threading;
-using reference = Kwill.Automation.Data.References.References;
-using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace Kwill.Automation.Domain.UserCases
 {
     public class LogIn
     {
-        public string LoginCaseOK(IWebDriver driver, string user, string password)
+        LoginPage loginPage = new LoginPage();
+
+        UserEntity userEntity = new UserEntity();
+
+        GeneralRepository repository = new GeneralRepository();
+
+
+        public string LoginCaseOK(IWebDriver driver)
         {
-            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
-            driver.FindElement(By.Id("offer")).Click();
-            driver.FindElements(By.ClassName("nav-link"))[4].Click();
-            driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);
-            driver.FindElement(By.Id("Input_Password")).SendKeys(password);
-            driver.FindElement(By.ClassName("btn-block")).Click();
-            Thread.Sleep(2000);
+            userEntity = repository.GetUser("Correct");
+
+            loginPage.AccessToLoginPage(driver);
+            loginPage.IntroduceAnEmail(driver, userEntity.Email);
+            loginPage.IntroduceAPassword(driver, userEntity.Password);
+            loginPage.ClickOnLoginButton(driver);
+
             return driver.Url;
         }
 
-        public string LoginCaseKO(IWebDriver driver, string user)
+        public string LoginCaseKO(IWebDriver driver)
         {
-            new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("offer")));
-            driver.FindElement(By.Id("offer")).Click();
-            driver.FindElements(By.ClassName("nav-link"))[4].Click();
-            driver.FindElement(By.Id("Input_EmailUserName")).SendKeys(user);
-            driver.FindElement(By.Id("Input_Password")).SendKeys("HiWord");
-            driver.FindElement(By.ClassName("btn-block")).Click();
-            Thread.Sleep(2000);
+            userEntity = repository.GetUser("Correct");
+
+            loginPage.AccessToLoginPage(driver);
+            loginPage.IntroduceAnEmail(driver, userEntity.Email);
+            loginPage.IntroduceAPassword(driver, userEntity.Password);
+            loginPage.ClickOnLoginButton(driver);
+
+            return driver.Url;
+        }
+
+        public string LoginCaseEmpty(IWebDriver driver)
+        {
+            userEntity = repository.GetUser("Correct");
+
+            loginPage.AccessToLoginPage(driver);
+            loginPage.IntroduceAnEmail(driver, userEntity.Email);
+            loginPage.IntroduceAPassword(driver, userEntity.Password);
+            loginPage.ClickOnLoginButton(driver);
+
+            return driver.Url;
+        }
+
+        public string AccessToForgotPasswordPage(IWebDriver driver)
+        {
+            loginPage.AccessToLoginPage(driver);
+            loginPage.ClickOnForgotYourPassword(driver);
+
             return driver.Url;
         }
     }

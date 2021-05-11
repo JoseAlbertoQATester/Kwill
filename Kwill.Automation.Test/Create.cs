@@ -15,7 +15,7 @@ namespace Kwill.Automation.Test
     {
         public WillEntity Will = new WillEntity();
         public CreateUser createUser = new CreateUser();
-        public Repository repository = new Repository();
+        public GeneralRepository repository = new GeneralRepository();
         //public Create_Report report = new Create_Report();
         public Socialnetwork Socialnetwork = new Socialnetwork();
         public string Environment { get; private set; }
